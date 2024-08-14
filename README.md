@@ -1,16 +1,3 @@
-# Express App
-
-## Description
-
-This is a Node.js application built with Express.js. It includes features such as authentication, middleware for rate limiting and CORS, and a connection to MongoDB.
-
-## Features
-
-- Authentication using JWT
-- Rate limiting and CORS middleware
-- MongoDB integration
-- Unit and integration tests
-
 ## Installation
 
 1. **Clone the repository:**
