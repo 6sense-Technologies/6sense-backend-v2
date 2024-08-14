@@ -5,10 +5,14 @@ module.exports = {
         tsconfigRootDir : __dirname, 
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint/eslint-plugin',"unused-imports"],
-    extends: [
+    plugins: [
+        '@typescript-eslint', 
+        'unused-imports', 
+      ],
+      extends: [
+        'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-     ],
+      ],
     root: true,
     env: {
         node: true,
@@ -42,9 +46,9 @@ module.exports = {
 
         // 'eslint no-multiple-empty-lines': 'error'
         /***New Rules Active*/
-        '@typescript-eslint/no-duplicate-enum-values': 'warn',
+        '@typescript-eslint/no-duplicate-enum-values': 'off',
         'no-duplicate-imports': 'off',
-        '@typescript-eslint/no-duplicate-imports': 'warn',
+        '@typescript-eslint/no-duplicate-imports': 'off',
         '@typescript-eslint/no-require-imports': 'warn',
         '@typescript-eslint/no-useless-empty-export': 'warn',
         /***New turned off rules */
