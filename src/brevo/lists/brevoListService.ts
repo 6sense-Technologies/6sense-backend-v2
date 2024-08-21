@@ -160,43 +160,13 @@ export const addContactsToList = async (
   const apiInstance = initializeBrevoClient();
 
   try {
-    const response = await apiInstance.post(`/contacts/lists/${listId}/contacts`, {
+    const response = await apiInstance.post(`/contacts/lists/${listId}/contacts/add`, {
       emails,
     });
     return {
       status: response.status,
       data: response.data,
       message: 'Contacts added to the list successfully',
-    };
-  } catch (error: any) {
-    const errorResponse = error.response?.data || {};
-    return {
-      status: error.response?.status || 500,
-      errorCode: errorResponse.code,
-      message: errorResponse.message || 'An error occurred',
-      data: {},
-    };
-  }
-};
-
-export const removeContactsFromList = async (
-  listId: number,
-  emails: string[],
-  removeAll?: boolean
-): Promise<IApiResponse> => {
-  const apiInstance = initializeBrevoClient();
-
-  try {
-    const response = await apiInstance.delete(`/contacts/lists/${listId}/contacts`, {
-      data: {
-        emails,
-        all: removeAll ? 'true' : 'false',
-      },
-    });
-    return {
-      status: response.status,
-      data: {},
-      message: 'Contacts removed from the list successfully',
     };
   } catch (error: any) {
     const errorResponse = error.response?.data || {};

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getAllLists, createList, getList, updateList, deleteList, getContactsFromList, addContactsToList, removeContactsFromList } from './brevoListService';
+import { getAllLists, createList, getList, updateList, deleteList, getContactsFromList, addContactsToList } from './brevoListService';
 
 export const getAllListsController = async (req: Request, res: Response): Promise<void> => {
   const { limit, offset, sort } = req.query;
@@ -68,12 +68,5 @@ export const addContactsToListController = async (req: Request, res: Response): 
   res.status(result.status).json(result);
 };
 
-export const removeContactsFromListController = async (req: Request, res: Response): Promise<void> => {
-  const { listId } = req.params;
-  const { emails, removeAll } = req.body;
-
-  const result = await removeContactsFromList(Number(listId), emails, removeAll);
-  res.status(result.status).json(result);
-};
 
 
