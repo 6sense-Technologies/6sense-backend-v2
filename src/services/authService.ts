@@ -25,7 +25,6 @@ export const generateToken = (): IApiResponse => {
       message: 'Token generated successfully',
     };
   } catch (error: any) {
-    console.error('Token generation failed:', error);
     return {
       status: 500,
       errorCode: 'TOKEN_GENERATION_FAILED',
@@ -56,7 +55,6 @@ export const verifyToken = async (token: string): Promise<IApiResponse> => {
       };
     }
   } catch (error: any) {
-    console.error('Token verification failed:', error);
     return {
       status: 401,
       errorCode: 'TOKEN_VERIFICATION_FAILED',
