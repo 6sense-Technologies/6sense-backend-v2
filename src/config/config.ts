@@ -4,17 +4,19 @@ dotenv.config();
 
 interface IConfig {
   port: number;
+  mongoURI: string;
 }
 
 const getConfig = (): IConfig => {
-  const { PORT } = process.env;
+  const { PORT, MONGO_URI } = process.env;
 
-  if (!PORT) {
+  if (!PORT || !MONGO_URI) {
     throw new Error('Missing required environment variables');
   }
 
   return {
     port: parseInt(PORT, 10),
+    mongoURI: MONGO_URI,
   };
 };
 

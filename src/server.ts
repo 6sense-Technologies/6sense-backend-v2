@@ -1,8 +1,11 @@
+import { connectDB } from './database/mongDB';
 import app from './app';
 import { config } from './config/config';
 
 const startServer = async (): Promise<void> => {
   try {
+    await connectDB();
+
     app.listen(config.port, () => {
       console.log(`Server is running on port ${config.port}`);
     });
