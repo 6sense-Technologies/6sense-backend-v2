@@ -15,6 +15,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 
-app.use('/api', helloWorldRoutes);
+app.use('/', helloWorldRoutes);
 
 export default app;
