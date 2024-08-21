@@ -7,6 +7,7 @@ import brevoFolderRoutes from './brevo/folders/brevoFolderRoutes';
 import brevoContactRoutes from './brevo/contact/brevoContactRoutes';
 import brevoListRoutes from './brevo/lists/brevoListRoutes';
 import brevoEventRoutes from './brevo/events/brevoEventRoutes';
+import emailRoutes from './brevo/email/brevoEmailRoutes';
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,5 +25,6 @@ app.use('/brevo', brevoFolderRoutes);
 app.use('/brevo', brevoContactRoutes);
 app.use('/brevo', brevoListRoutes);
 app.use('/brevo', brevoEventRoutes);
+app.use('/brevo', emailRoutes);
 
 export default app;
