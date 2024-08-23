@@ -8,6 +8,7 @@ import brevoContactRoutes from './brevo/contact/brevoContactRoutes';
 import brevoListRoutes from './brevo/lists/brevoListRoutes';
 import brevoEventRoutes from './brevo/events/brevoEventRoutes';
 import emailRoutes from './brevo/email/brevoEmailRoutes';
+import mixpanelEventRoutes from './mixpanel/mixpanelEventRoutes';
 
 const app = express();
 app.use(bodyParser.json());
@@ -26,5 +27,6 @@ app.use('/brevo', brevoContactRoutes);
 app.use('/brevo', brevoListRoutes);
 app.use('/brevo', brevoEventRoutes);
 app.use('/brevo', emailRoutes);
+app.use('/mixpanel', mixpanelEventRoutes);
 
 export default app;
