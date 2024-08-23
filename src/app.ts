@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import corsMiddleware from './middleware/corsMiddleware';
 import rateLimiter from './middleware/rateLimitMiddleware';
 import helloWorldRoutes from './routes/helloWorldRoutes';
+import brevoFolderRoutes from './brevo/folders/brevoFolderRoutes';
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,5 +17,6 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.use('/', helloWorldRoutes);
+app.use('/brevo', brevoFolderRoutes);
 
 export default app;
