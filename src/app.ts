@@ -4,6 +4,7 @@ import corsMiddleware from './middleware/corsMiddleware';
 import rateLimiter from './middleware/rateLimitMiddleware';
 import helloWorldRoutes from './routes/helloWorldRoutes';
 import brevoFolderRoutes from './brevo/folders/brevoFolderRoutes';
+import brevoContactRoutes from './brevo/contact/brevoContactRoutes';
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,5 +19,6 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/', helloWorldRoutes);
 app.use('/brevo', brevoFolderRoutes);
+app.use('/brevo', brevoContactRoutes);
 
 export default app;
