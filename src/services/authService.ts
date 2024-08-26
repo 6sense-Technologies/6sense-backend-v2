@@ -1,21 +1,11 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload, } from 'jsonwebtoken';
 import { config } from '../config/config';
 import AuthKey from '../models/authKeyModel';
 import { IApiResponse } from '../types';
 
-interface IJwtPayload {
-  key: string;
-}
-
-const checkJwtSecret = (): void => {
-  if (!config.jwtSecret) {
-    throw new Error('JWT Secret is not defined');
-  }
-};
-
 export const generateToken = (): IApiResponse => {
   try {
-    checkJwtSecret();
+   
     const key = 'express'; 
     const token = jwt.sign({ key }, config.jwtSecret, { expiresIn: '1h' });
 
@@ -28,7 +18,7 @@ export const generateToken = (): IApiResponse => {
     return {
       status: 500,
       errorCode: 'TOKEN_GENERATION_FAILED',
-      message: error.message || 'An error occurred while generating the token',
+      message: error.message,
       data: {},
     };
   }
@@ -36,8 +26,8 @@ export const generateToken = (): IApiResponse => {
 
 export const verifyToken = async (token: string): Promise<IApiResponse> => {
   try {
-    checkJwtSecret();
-    const decoded = jwt.verify(token, config.jwtSecret) as IJwtPayload;
+    
+    const decoded = jwt.verify(token, config.jwtSecret) as JwtPayload;
     const validKey = await AuthKey.findOne({ key: decoded.key });
 
     if (validKey) {
@@ -56,7 +46,7 @@ export const verifyToken = async (token: string): Promise<IApiResponse> => {
     }
   } catch (error: any) {
     return {
-      status: 401,
+      status: error.response?.status || 401,
       errorCode: 'TOKEN_VERIFICATION_FAILED',
       message: error.message || 'An error occurred while verifying the token',
       data: {},
