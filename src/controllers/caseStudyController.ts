@@ -1,32 +1,33 @@
 import { Request, Response } from 'express';
-import { createProject, getAllProjects, getProjectById, updateProject, deleteProject } from '../services/caseStudyService';
-
-export const getAllProjectsController = async (req: Request, res: Response): Promise<void> => {
-    const result = await getAllProjects();
-    res.status(result.status).json(result);
-};
+import { createProject, getAllProjects, getProjectBySlug, updateProject, deleteProjectBySlug } from '../services/caseStudyService';
+import { IApiResponse,IProject } from '../types';
 
 export const createProjectController = async (req: Request, res: Response): Promise<void> => {
-    const projectData = req.body;
-    const result = await createProject(projectData);
-    res.status(result.status).json(result);
+  const projectData: IProject = req.body;
+  const result: IApiResponse = await createProject(projectData);
+  res.status(result.status).json(result);
 };
 
-export const getProjectByIdController = async (req: Request, res: Response): Promise<void> => {
-    const { id } = req.params;
-    const result = await getProjectById(id);
-    res.status(result.status).json(result);
+export const getAllProjectsController = async (_req: Request, res: Response): Promise<void> => {
+  const result: IApiResponse = await getAllProjects();
+  res.status(result.status).json(result);
+};
+
+export const getProjectBySlugController = async (req: Request, res: Response): Promise<void> => {
+  const { slug } = req.params;
+  const result: IApiResponse = await getProjectBySlug(slug);
+  res.status(result.status).json(result);
 };
 
 export const updateProjectController = async (req: Request, res: Response): Promise<void> => {
-    const { id } = req.params;
-    const updateData = req.body;
-    const result = await updateProject(id, updateData);
-    res.status(result.status).json(result);
+  const { slug } = req.params;
+  const updateData: Partial<IProject> = req.body;
+  const result: IApiResponse = await updateProject(slug, updateData);
+  res.status(result.status).json(result);
 };
 
-export const deleteProjectController = async (req: Request, res: Response): Promise<void> => {
-    const { id } = req.params;
-    const result = await deleteProject(id);
-    res.status(result.status).json(result);
+export const deleteProjectBySlugController = async (req: Request, res: Response): Promise<void> => {
+  const { slug } = req.params;
+  const result: IApiResponse = await deleteProjectBySlug(slug);
+  res.status(result.status).json(result);
 };
