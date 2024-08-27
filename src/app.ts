@@ -10,7 +10,6 @@ import brevoContactRoutes from './brevo/contact/brevoContactRoutes';
 import brevoListRoutes from './brevo/lists/brevoListRoutes';
 import brevoEventRoutes from './brevo/events/brevoEventRoutes';
 import emailRoutes from './brevo/email/brevoEmailRoutes';
-import mixpanelEventRoutes from './mixpanel/mixpanelEventRoutes';
 import caseStudyRoutes from './routes/caseStudyRoutes'
 import { generateToken } from './services/authService';
 import mixpanelRoutes from './mixpanel/mixpanelRoutes';
@@ -40,7 +39,6 @@ app.use('/brevo', brevoContactRoutes);
 app.use('/brevo', brevoListRoutes);
 app.use('/brevo', brevoEventRoutes);
 app.use('/brevo', emailRoutes);
-app.use('/mixpanel', mixpanelEventRoutes);
 app.use('/case-study', caseStudyRoutes);
 app.use('/mixpanel', mixpanelRoutes);
 
