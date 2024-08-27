@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import corsMiddleware from './middleware/corsMiddleware';
 import rateLimiter from './middleware/rateLimitMiddleware';
 import helloWorldRoutes from './routes/helloWorldRoutes';
@@ -8,12 +9,13 @@ import brevoContactRoutes from './brevo/contact/brevoContactRoutes';
 import brevoListRoutes from './brevo/lists/brevoListRoutes';
 import brevoEventRoutes from './brevo/events/brevoEventRoutes';
 import emailRoutes from './brevo/email/brevoEmailRoutes';
-import mixpanelEventRoutes from './mixpanel/mixpanelEventRoutes';
+import mixpanelRoutes from './mixpanel/mixpanelRoutes';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(corsMiddleware);
 app.use(rateLimiter);
+app.use(cookieParser());
 
 
 app.get('/', (req: Request, res: Response) => {
@@ -27,6 +29,6 @@ app.use('/brevo', brevoContactRoutes);
 app.use('/brevo', brevoListRoutes);
 app.use('/brevo', brevoEventRoutes);
 app.use('/brevo', emailRoutes);
-app.use('/mixpanel', mixpanelEventRoutes);
+app.use('/mixpanel', mixpanelRoutes);
 
 export default app;
