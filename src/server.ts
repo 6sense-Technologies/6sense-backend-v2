@@ -1,7 +1,6 @@
-import { connectDB } from './database/mongoDB';
-import app from './app';
-import { config } from './config/config';
-
+import { connectDB } from "./database/mongoDB";
+import app from "./app";
+import { config } from "./config/config";
 
 const startServer = async (): Promise<void> => {
   try {
@@ -11,7 +10,7 @@ const startServer = async (): Promise<void> => {
       console.log(`Server is running on port ${config.port}`);
     });
   } catch (err) {
-    console.error('Error starting server:', err);
+    console.error(`Error starting server:`, err);
     process.exit(1);
   }
 };

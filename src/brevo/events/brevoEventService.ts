@@ -1,53 +1,36 @@
-import { initializeBrevoClient } from '../../config/brevoConfig';
+import { initializeBrevoClient } from "../../config/brevoConfig";
+import { IApiResponse } from "../../types";
+import { handleSuccess, handleError } from "../../utils/responseHandlers";
 
-interface IApiResponse {
-  status: number;
-  errorCode?: string;
-  message?: string;
-  data: any;
-}
-
-interface Identifiers {
+interface IIdentifiers {
   email_id?: string;
-  ext_id?: string;
 }
 
-interface ContactProperties {
+interface IContactProperties {
   [key: string]: any;
 }
 
-interface EventProperties {
+interface IEventProperties {
   [key: string]: any;
 }
 
-interface CreateEventOptions {
+interface ICreateEventOptions {
   event_name: string;
   event_date?: string;
-  identifiers: Identifiers;
-  contact_properties?: ContactProperties;
-  event_properties?: EventProperties;
+  identifiers: IIdentifiers;
+  contact_properties?: IContactProperties;
+  event_properties?: IEventProperties;
 }
 
-export const createEvent = async (eventOptions: CreateEventOptions): Promise<IApiResponse> => {
+export const createEvent = async (
+  eventOptions: ICreateEventOptions,
+): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 
   try {
-    const response = await apiInstance.post('/events', eventOptions);
-    return {
-      status: response.status,
-      data: response.data,
-      message: 'Event created successfully',
-    };
-  } catch (error: any) {
-    const errorResponse = error.response?.data || {};
-    return {
-      status: error.response?.status || 500,
-      errorCode: errorResponse.errorCode,
-      message: errorResponse.message || 'An error occurred',
-      data: {},
-    };
+    const response = await apiInstance.post("/events", eventOptions);
+    return handleSuccess(response, "Event created successfully");
+  } catch (error) {
+    return handleError(error);
   }
 };
-
-
-
