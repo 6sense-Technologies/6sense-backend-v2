@@ -1,40 +1,82 @@
-import Project from '../models/casestudyModel';
-import { IApiResponse,IProject } from '../types';
-import slugify from 'slugify';
+import Project, { IProject } from "../models/casestudyModel";
+import { IApiResponse } from "../types";
+import slugify from "slugify";
+import { handleSuccess, handleError } from "../utils/responseHandlers";
 
-const createApiResponse = (
-  status: number,
-  message: string,
-  data: any = {},
-  errorCode?: string
-): IApiResponse => {
-  return { status, message, data, errorCode };
-};
-
-export const createProject = async (projectData: IProject): Promise<IApiResponse> => {
+export const createProject = async (
+  projectData: IProject
+): Promise<IApiResponse> => {
   try {
-    const existingProject = await Project.findOne({ appName: projectData.appName });
+    const existingProject = await Project.findOne({
+      appName: projectData.appName,
+    });
     if (existingProject) {
-      return createApiResponse(400, 'A project with this app name already exists');
+      return handleError({
+        response: {
+          status: 400,
+          data: { message: "A project with this app name already exists" },
+        },
+      });
     }
 
     if (!projectData.slug) {
-      projectData.slug = slugify(projectData.appName, { lower: true, strict: true });
+      projectData.slug = slugify(projectData.appName, {
+        lower: true,
+        strict: true,
+      });
     }
 
     const createdProject = await Project.create(projectData);
-    return createApiResponse(201, 'Project successfully created', createdProject);
+    return handleSuccess(
+      { status: 201, data: createdProject },
+      "Project successfully created"
+    );
   } catch (error: any) {
-    return createApiResponse(error.status || 500, error.message || 'An error occurred');
+    return handleError(error);
   }
 };
 
 export const getAllProjects = async (): Promise<IApiResponse> => {
   try {
     const projects = await Project.find();
-    return createApiResponse(200, 'Projects retrieved successfully', projects);
+    return handleSuccess(
+      { status: 200, data: projects },
+      "Projects retrieved successfully"
+    );
   } catch (error: any) {
-    return createApiResponse(error.status || 500, error.message || 'An error occurred');
+    return handleError(error);
+  }
+};
+
+export const getBasicProjects = async (
+  page: number = 1,
+  limit: number = 6
+): Promise<IApiResponse> => {
+  try {
+    const currentPage = Math.max(1, page);
+    const currentLimit = Math.max(1, limit);
+
+    const skip = (currentPage - 1) * currentLimit;
+
+    const projects = await Project.find({}, "appName logo slug imageSrc")
+      .skip(skip)
+      .limit(currentLimit);
+
+    const totalProjects = await Project.countDocuments();
+
+    return handleSuccess(
+      {
+        status: 200,
+        data: {
+          projects,
+          totalPages: Math.ceil(totalProjects / currentLimit),
+          currentPage,
+        },
+      },
+      "Basic projects retrieved successfully"
+    );
+  } catch (error: any) {
+    return handleError(error);
   }
 };
 
@@ -42,19 +84,30 @@ export const getProjectBySlug = async (slug: string): Promise<IApiResponse> => {
   try {
     const project = await Project.findOne({ slug });
     if (project) {
-      return createApiResponse(200, 'Project details retrieved successfully', project);
-    } else {
-      return createApiResponse(404, 'Project not found');
-    }
+      return handleSuccess(
+        { status: 200, data: project },
+        "Project details retrieved successfully"
+      );
+    } 
+      return handleError({
+        response: { status: 404, data: { message: "Project not found" } },
+      });
+    
   } catch (error: any) {
-    return createApiResponse(error.status || 500, error.message || 'An error occurred');
+    return handleError(error);
   }
 };
 
-export const updateProject = async (slug: string, updateData: Partial<IProject>): Promise<IApiResponse> => {
+export const updateProject = async (
+  slug: string,
+  updateData: Partial<IProject>
+): Promise<IApiResponse> => {
   try {
-    if (updateData.title) {
-      updateData.slug = slugify(updateData.title, { lower: true, strict: true });
+    if (updateData.appName) {
+      updateData.slug = slugify(updateData.appName, {
+        lower: true,
+        strict: true,
+      });
     }
 
     const updatedProject = await Project.findOneAndUpdate(
@@ -64,24 +117,35 @@ export const updateProject = async (slug: string, updateData: Partial<IProject>)
     );
 
     if (updatedProject) {
-      return createApiResponse(200, 'Project successfully updated', updatedProject);
-    } else {
-      return createApiResponse(404, 'Project not found');
+      return handleSuccess(
+        { status: 200, data: updatedProject },
+        "Project successfully updated"
+      );
     }
+    return handleError({
+      response: { status: 404, data: { message: "Project not found" } },
+    });
   } catch (error: any) {
-    return createApiResponse(error.status || 500, error.message || 'An error occurred');
+    return handleError(error);
   }
 };
 
-export const deleteProjectBySlug = async (slug: string): Promise<IApiResponse> => {
+export const deleteProjectBySlug = async (
+  slug: string
+): Promise<IApiResponse> => {
   try {
     const deletedProject = await Project.findOneAndDelete({ slug });
     if (deletedProject) {
-      return createApiResponse(200, 'Project successfully deleted');
-    } else {
-      return createApiResponse(404, 'Project not found');
+      return handleSuccess(
+        { status: 200, data: {} },
+        "Project successfully deleted"
+      );
     }
+      return handleError({
+        response: { status: 404, data: { message: "Project not found" } },
+      });
+    
   } catch (error: any) {
-    return createApiResponse(error.status || 500, error.message || 'An error occurred');
+    return handleError(error);
   }
 };
