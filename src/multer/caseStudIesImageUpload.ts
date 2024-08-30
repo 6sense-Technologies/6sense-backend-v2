@@ -3,6 +3,7 @@ import path from "path";
 import { IProject } from "../models/casestudyModel";
 import upload from "./multerConfig";
 
+// Define the upload fields for the project
 export const handleProjectUploads = upload.fields([
   { name: "logo", maxCount: 1 },
   { name: "imageSrc", maxCount: 1 },
@@ -11,13 +12,9 @@ export const handleProjectUploads = upload.fields([
   { name: "keyFeaturesImage", maxCount: 1 },
   { name: "resultImage", maxCount: 1 },
   { name: "clientImage", maxCount: 1 },
-  { name: "teamIcon", maxCount: 1 },
-  { name: "sprintIcon", maxCount: 1 },
-  { name: "timeIcon", maxCount: 1 },
-  { name: "technologiesIcon", maxCount: 1 },
-  { name: "industryIcon", maxCount: 1 },
+  { name: "heroInfoImages", maxCount: 5 },
+  { name: "aboutInfoImages", maxCount: 4 },
 ]);
-
 
 const getRelativePath = (filePath: string | undefined) => {
   if (!filePath) return undefined;
@@ -40,36 +37,9 @@ export const processFiles = (req: Request, baseData: any): IProject => {
 
     details: {
       ...baseData.details,
-      heroInfo: baseData.details.heroInfo.map((info: any, index: number) => ({
-        ...info,
-        icon: files["teamIcon"] && index === 0 
-          ? getRelativePath(files["teamIcon"][0].path)
-          : info.icon,
-      })),
-      sprints: {
-        icon: files["sprintIcon"]
-          ? getRelativePath(files["sprintIcon"][0].path)
-          : baseData.details.heroInfo[0]?.sprints?.icon, 
-      },
-      time: {
-        icon: files["timeIcon"]
-          ? getRelativePath(files["timeIcon"][0].path)
-          : baseData.details.heroInfo[0]?.time?.icon, 
-      },
       overviewImage: files["overviewImage"]
         ? getRelativePath(files["overviewImage"][0].path)
         : baseData.details?.overviewImage,
-      aboutInfo: baseData.details.aboutInfo.map((info: any) => ({
-        ...info,
-        icon: files["technologiesIcon"]
-          ? getRelativePath(files["technologiesIcon"][0].path)
-          : info.icon,
-      })),
-      industryName: {
-        icon: files["industryIcon"]
-          ? getRelativePath(files["industryIcon"][0].path)
-          : baseData.details?.aboutInfo[0]?.industryName?.icon, 
-      },
       clientFeedback: {
         ...baseData.details.clientFeedback,
         clientImage: files["clientImage"]
@@ -81,19 +51,38 @@ export const processFiles = (req: Request, baseData: any): IProject => {
         solutionImage: files["solutionImage"]
           ? getRelativePath(files["solutionImage"][0].path)
           : baseData.details.solution?.solutionImage,
+        solutionsPoints1: baseData.details.solution.solutionsPoints1,
+        solutionsPoints2: baseData.details.solution.solutionsPoints2,
       },
       keyFeature: {
         ...baseData.details.keyFeature,
         keyFeaturesImage: files["keyFeaturesImage"]
           ? getRelativePath(files["keyFeaturesImage"][0].path)
           : baseData.details.keyFeature?.keyFeaturesImage,
+        keyFeaturesPoints1: baseData.details.keyFeature.keyFeaturesPoints1,
+        keyFeaturesPoints2: baseData.details.keyFeature.keyFeaturesPoints2,
       },
       result: {
         ...baseData.details.result,
         resultImage: files["resultImage"]
           ? getRelativePath(files["resultImage"][0].path)
           : baseData.details.result?.resultImage,
+        resultsPoints1: baseData.details.result.resultsPoints1,
+        resultsPoints2: baseData.details.result.resultsPoints2,
       },
+      heroInfo: baseData.details.heroInfo.map((info: any, index: number) => ({
+        ...info,
+        icon: files["heroInfoImages"] && files["heroInfoImages"][index]
+          ? getRelativePath(files["heroInfoImages"][index].path)
+          : info.icon,
+      })),
+      aboutInfo: baseData.details.aboutInfo.map((info: any, index: number) => ({
+        ...info,
+        icon: files["aboutInfoImages"] && files["aboutInfoImages"][index]
+          ? getRelativePath(files["aboutInfoImages"][index].path)
+          : info.icon,
+      })),
+      overviewParagraphs: baseData.details.overviewParagraphs,
     },
   };
 };
