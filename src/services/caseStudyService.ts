@@ -49,8 +49,8 @@ export const getAllProjects = async (): Promise<IApiResponse> => {
 };
 
 export const getBasicProjects = async (
-  page: number = 1,
-  limit: number = 6
+  page = 1,
+  limit = 6
 ): Promise<IApiResponse> => {
   try {
     const currentPage = Math.max(1, page);
