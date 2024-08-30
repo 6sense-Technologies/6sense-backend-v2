@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 interface IHeroInfo {
   icon: string;
@@ -101,7 +101,7 @@ const ResultSchema = new Schema<IResult>({
 
 const ClientFeedbackSchema = new Schema<IClientFeedback>({
   clientNameAndDesignation: { type: String },
-  clientImage: { type: String, },
+  clientImage: { type: String },
   feedback: { type: String },
 });
 
@@ -119,13 +119,16 @@ const DetailsSchema = new Schema<IDetails>({
   clientFeedback: { type: ClientFeedbackSchema },
 });
 
-const ProjectSchema = new Schema<IProject>({
-  title: { type: String },
-  appName: { type: String },
-  logo: { type: String },
-  slug: { type: String, unique: true },
-  imageSrc: { type: String },
-  details: { type: DetailsSchema },
-}, { timestamps: true });
+const ProjectSchema = new Schema<IProject>(
+  {
+    title: { type: String },
+    appName: { type: String },
+    logo: { type: String },
+    slug: { type: String, unique: true },
+    imageSrc: { type: String },
+    details: { type: DetailsSchema },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model<IProject>('Project', ProjectSchema);
+export default mongoose.model<IProject>("Project", ProjectSchema);

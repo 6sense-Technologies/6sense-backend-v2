@@ -25,14 +25,14 @@ beforeEach((): void => {
 const mockSuccessResponse = (
   method: keyof typeof mockedBrevoClient,
   status: number,
-  data: any,
+  data: any
 ): void => {
   mockedBrevoClient[method].mockResolvedValue({ status, data });
 };
 
 const mockErrorResponse = (
   method: keyof typeof mockedBrevoClient,
-  errorMessage: string,
+  errorMessage: string
 ): void => {
   mockedBrevoClient[method].mockRejectedValue({ message: errorMessage });
 };
@@ -64,7 +64,7 @@ describe("Contact Service", () => {
         "test@example.com",
         { name: "Test" },
         [1],
-        true,
+        true
       );
       expect(result.status).toBe(201);
       expect(result.message).toBe("Contact successfully created");
@@ -111,7 +111,7 @@ describe("Contact Service", () => {
         "updated@example.com",
         { name: "Updated" },
         [2],
-        false,
+        false
       );
       expect(result.status).toBe(200);
       expect(result.message).toBe("Contact successfully updated");
@@ -128,7 +128,7 @@ describe("Contact Service", () => {
       const result: IApiResponse = await updateContact(
         "123",
         "updated@example.com",
-        { name: "Updated" },
+        { name: "Updated" }
       );
       expect(result.status).toBe(500);
       expect(result.message).toBe("Error");

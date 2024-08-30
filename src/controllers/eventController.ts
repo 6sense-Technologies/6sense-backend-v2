@@ -2,9 +2,10 @@ import { Request, Response } from "express";
 import { handleTrackEventByMixpanel } from "../mixpanel/mixpanelController";
 import { handleCreateEventByBrevo } from "../brevo/events/brevoEventController";
 
-
-
-export const handleCreateEvent = async (req: Request, res: Response): Promise<void> => {
+export const handleCreateEvent = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   // Call Mixpanel tracking first
   const mixpanelResult = await handleTrackEventByMixpanel(req, res);
 
@@ -27,4 +28,3 @@ export const handleCreateEvent = async (req: Request, res: Response): Promise<vo
     message: "Event tracked successfully in both Mixpanel and Brevo",
   });
 };
-
