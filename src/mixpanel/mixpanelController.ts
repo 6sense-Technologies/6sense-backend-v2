@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { updateUserProfile, trackUserEvent, createAlias } from "./mixpanelService";
+import { updateUserProfile, trackUserEvent, mergeIdentities } from "./mixpanelService";
 import { v4 as uuidv4 } from "uuid";
 
 export const handleTrackEventByMixpanel = async (
@@ -25,7 +25,7 @@ export const handleTrackEventByMixpanel = async (
       }
 
       if (previousDistinctId) {
-        const aliasResponse = await createAlias(previousDistinctId, distinctId);
+        const aliasResponse = await mergeIdentities(previousDistinctId, distinctId);
         if (aliasResponse.status !== 200) {
           return { status: aliasResponse.status, message: "Failed to create alias in Mixpanel" };
         }
