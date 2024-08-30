@@ -12,9 +12,7 @@ export const updateUserProfile = async (
   properties: IEventProperties,
 ): Promise<IApiResponse> => {
   const { peopleApiUrl, projectToken } = mixpanelConfig;
-
-  const { FIRSTNAME, LASTNAME, email_id } = properties;
-  const name = `${FIRSTNAME || ""} ${LASTNAME || ""}`.trim();
+  const { name, email, companyWebsite } = properties;
 
   try {
     const response = await axios.post(peopleApiUrl, null, {
@@ -24,8 +22,8 @@ export const updateUserProfile = async (
           $distinct_id: distinctId,
           $set: {
             $name: name,
-            $email: email_id,
-            ...properties,
+            $email: email,
+            $company_website: companyWebsite,
           },
         }),
       },
