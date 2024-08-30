@@ -10,7 +10,7 @@ import {
 
 export const createFolderController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { name } = req.body;
   const result = await createFolder(name);
@@ -70,7 +70,7 @@ export const getFolderListsController = async (
     Number(folderId),
     parsedLimit,
     parsedOffset,
-    parsedSort
+    parsedSort,
   );
   res.status(result.status).json(result);
 };

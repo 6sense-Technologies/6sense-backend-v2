@@ -15,7 +15,7 @@ export const handleError = (
   error: any,
   errorCode?: string,
   message?: string,
-  statusCode: number = 500
+  statusCode = 500,
 ): IApiResponse => {
   const errorResponse = error?.response?.data || {};
   return {

@@ -59,11 +59,11 @@ describe("SendContactEmail", () => {
           name: "proshanto saha",
         },
       }),
-      expect.any(Object)
+      expect.any(Object),
     );
     expect(mockedHandleSuccess).toHaveBeenCalledWith(
       { data: {} },
-      "Email successfully sent"
+      "Email successfully sent",
     );
     expect(response).toEqual(expectedResponse);
   });
@@ -121,7 +121,7 @@ describe("SendContactEmail", () => {
     const response = await SendContactEmail(contactProperties);
     expect(mockedAxios.post).toHaveBeenCalled();
     expect(mockedHandleError).toHaveBeenCalledWith(
-      new Error("Internal server error")
+      new Error("Internal server error"),
     );
     expect(response).toEqual(expectedResponse);
   });

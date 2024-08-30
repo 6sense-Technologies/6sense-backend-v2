@@ -3,13 +3,13 @@ import { IApiResponse } from "../types";
 import { handleSuccess, handleError } from "../utils/responseHandlers";
 
 export const createTeamGallery = async (
-  galleryData: ITeamGallery
+  galleryData: ITeamGallery,
 ): Promise<IApiResponse> => {
   try {
     const createdGallery = await TeamGallery.create(galleryData);
     return handleSuccess(
       { status: 201, data: createdGallery },
-      "Gallery successfully created"
+      "Gallery successfully created",
     );
   } catch (error: any) {
     return handleError(error);
@@ -21,7 +21,7 @@ export const getAllTeamGalleries = async (): Promise<IApiResponse> => {
     const galleries = await TeamGallery.find();
     return handleSuccess(
       { status: 200, data: galleries },
-      "Galleries retrieved successfully"
+      "Galleries retrieved successfully",
     );
   } catch (error: any) {
     return handleError(error);
@@ -34,7 +34,7 @@ export const getTeamGalleryById = async (id: string): Promise<IApiResponse> => {
     if (gallery) {
       return handleSuccess(
         { status: 200, data: gallery },
-        "Gallery details retrieved successfully"
+        "Gallery details retrieved successfully",
       );
     }
     return handleError({
@@ -47,19 +47,19 @@ export const getTeamGalleryById = async (id: string): Promise<IApiResponse> => {
 
 export const updateTeamGallery = async (
   id: string,
-  updateData: Partial<ITeamGallery>
+  updateData: Partial<ITeamGallery>,
 ): Promise<IApiResponse> => {
   try {
     const updatedGallery = await TeamGallery.findByIdAndUpdate(
       id,
       { $set: updateData },
-      { new: true }
+      { new: true },
     );
 
     if (updatedGallery) {
       return handleSuccess(
         { status: 200, data: updatedGallery },
-        "Gallery successfully updated"
+        "Gallery successfully updated",
       );
     }
     return handleError({
@@ -71,14 +71,14 @@ export const updateTeamGallery = async (
 };
 
 export const deleteTeamGalleryById = async (
-  id: string
+  id: string,
 ): Promise<IApiResponse> => {
   try {
     const deletedGallery = await TeamGallery.findByIdAndDelete(id);
     if (deletedGallery) {
       return handleSuccess(
         { status: 200, data: {} },
-        "Gallery successfully deleted"
+        "Gallery successfully deleted",
       );
     }
     return handleError({

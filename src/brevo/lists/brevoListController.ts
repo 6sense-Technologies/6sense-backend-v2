@@ -11,7 +11,7 @@ import {
 
 export const getAllListsController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { limit, offset, sort } = req.query;
   const parsedLimit = limit ? Number(limit) : undefined;
@@ -74,7 +74,7 @@ export const getContactsFromListController = async (
     parsedModifiedSince,
     parsedLimit,
     parsedOffset,
-    parsedSort
+    parsedSort,
   );
   res.status(result.status).json(result);
 };
