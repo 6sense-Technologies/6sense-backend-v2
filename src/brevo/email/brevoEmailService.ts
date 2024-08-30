@@ -6,12 +6,9 @@ import sanitizeHtml from "sanitize-html";
 interface IBrevoEmailOptions {
   subject: string;
   htmlContent: string;
-  sender: { name: string; email: string };
-  to: { email: string; name: string }[];
+  sender: { email: string };
+  to: { email: string}[];
   replyTo?: { email: string; name?: string };
-  headers?: { [key: string]: string };
-  params?: { [key: string]: string };
-  attachments?: Array<{ url?: string; content?: string; name: string }>;
 }
 
 export const sendBrevoEmail = async (
@@ -23,9 +20,6 @@ export const sendBrevoEmail = async (
     sender,
     to,
     replyTo,
-    headers,
-    params,
-    attachments,
   } = options;
 
   try {
@@ -37,9 +31,6 @@ export const sendBrevoEmail = async (
         sender,
         to,
         replyTo,
-        headers,
-        params,
-        attachments,
       },
       {
         headers: {
@@ -110,11 +101,10 @@ export const SendContactEmail = async (
       FIRSTNAME,
     )} ${sanitizeHtml(LASTNAME)}`,
     htmlContent: sanitizedHtmlContent,
-    sender: { name: "Contact Form", email: process.env.PERSONAL_EMAIL || "" },
+    sender: { email: process.env.PERSONAL_EMAIL || "" },
     to: [
       {
         email: process.env.PERSONAL_EMAIL || "",
-        name: `${sanitizeHtml(FIRSTNAME)} ${sanitizeHtml(LASTNAME)}`,
       },
     ],
     replyTo: {

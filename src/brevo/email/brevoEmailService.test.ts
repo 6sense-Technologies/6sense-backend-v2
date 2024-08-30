@@ -1,91 +1,128 @@
 import axios from "axios";
-import { sendBrevoEmail } from "./brevoEmailService";
-import { IApiResponse } from "../../types";
+import { SendContactEmail } from "./brevoEmailService";
 import { handleSuccess, handleError } from "../../utils/responseHandlers";
+import { IApiResponse } from "../../types";
 
 jest.mock("axios");
 jest.mock("../../utils/responseHandlers");
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
+const mockedHandleSuccess = handleSuccess as jest.MockedFunction<
+  typeof handleSuccess
+>;
+const mockedHandleError = handleError as jest.MockedFunction<
+  typeof handleError
+>;
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
+describe("SendContactEmail", () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
 
-const mockSuccessResponse = (
-  method: "post" | "get",
-  status: number,
-  data: any,
-) => {
-  mockedAxios[method].mockResolvedValue({ status, data });
-};
+  it("should send an email successfully with valid contact properties", async () => {
+    const contactProperties = {
+      FIRSTNAME: "proshanto",
+      LASTNAME: "saha",
+      email: "proshantosaha@gmail.com",
+      companyWebsite: "https://proshanto.com",
+      message: "This is a test message.",
+      getNda: true,
+      consent: true,
+    };
 
-const mockErrorResponse = (method: "post" | "get", errorMessage: string) => {
-  mockedAxios[method].mockRejectedValue(new Error(errorMessage));
-};
+    const expectedResponse: IApiResponse = {
+      status: 200,
+      message: "Email successfully sent",
+      data: {},
+    };
 
-const mockHandleSuccess = (status: number, message: string) => {
-  (handleSuccess as jest.Mock).mockImplementation((response, msg) => ({
-    status: response.status,
-    message: msg || message,
-  }));
-};
+    mockedAxios.post.mockResolvedValueOnce({ data: {} });
+    mockedHandleSuccess.mockReturnValueOnce(expectedResponse);
 
-const mockHandleError = (status: number, errorMessage: string) => {
-  (handleError as jest.Mock).mockImplementation((err) => ({
-    status,
-    message: errorMessage || err.message,
-  }));
-};
+    const response = await SendContactEmail(contactProperties);
 
-describe("Email Service", () => {
-  describe("sendBrevoEmail", () => {
-    it("should send an email successfully", async () => {
-      const emailOptions = {
-        subject: "Test Subject",
-        htmlContent: "<p>Test Content</p>",
-        sender: { name: "Sender Name", email: "sender@example.com" },
-        to: [{ email: "recipient@example.com", name: "Recipient Name" }],
-        replyTo: { email: "replyto@example.com", name: "Reply To" },
-        headers: { "X-Custom-Header": "value" },
-        params: { param1: "value1" },
-        attachments: [{ name: "attachment.txt", content: "file content" }],
-      };
-
-      mockSuccessResponse("post", 200, {});
-      mockHandleSuccess(200, "Email successfully sent");
-
-      const result: IApiResponse = await sendBrevoEmail(emailOptions);
-
-      expect(result.status).toBe(200);
-      expect(result.message).toBe("Email successfully sent");
-      expect(mockedAxios.post).toHaveBeenCalledWith(
-        "https://api.brevo.com/v3/smtp/email",
-        emailOptions,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "api-key": process.env.BREVO_API_KEY || "",
-          },
+    expect(mockedAxios.post).toHaveBeenCalledWith(
+      "https://api.brevo.com/v3/smtp/email",
+      expect.objectContaining({
+        subject: "New Contact Form Submission from proshanto saha",
+        htmlContent: expect.any(String),
+        sender: {
+          email: process.env.PERSONAL_EMAIL || "",
         },
-      );
-    });
+        to: [
+          {
+            email: process.env.PERSONAL_EMAIL || "",
+          },
+        ],
+        replyTo: {
+          email: "proshantosaha@gmail.com",
+          name: "proshanto saha",
+        },
+      }),
+      expect.any(Object)
+    );
+    expect(mockedHandleSuccess).toHaveBeenCalledWith(
+      { data: {} },
+      "Email successfully sent"
+    );
+    expect(response).toEqual(expectedResponse);
+  });
 
-    it("should handle errors when sending an email", async () => {
-      const emailOptions = {
-        subject: "Test Subject",
-        htmlContent: "<p>Test Content</p>",
-        sender: { name: "Sender Name", email: "sender@example.com" },
-        to: [{ email: "recipient@example.com", name: "Recipient Name" }],
-      };
+  it("should return an error response for missing required fields", async () => {
+    const contactProperties = {
+      FIRSTNAME: "",
+      email: "proshantosaha@gmail.com",
+      consent: true,
+    };
 
-      mockErrorResponse("post", "Error");
-      mockHandleError(500, "Error");
+    const expectedResponse: IApiResponse = {
+      status: 400,
+      message:
+        "Missing required fields: FIRSTNAME, email, and consent are required.",
+    };
 
-      const result: IApiResponse = await sendBrevoEmail(emailOptions);
+    const response = await SendContactEmail(contactProperties);
+    expect(response).toEqual(expectedResponse);
+  });
 
-      expect(result.status).toBe(500);
-      expect(result.message).toBe("Error");
-    });
+  it("should return an error response for invalid email format", async () => {
+    const contactProperties = {
+      FIRSTNAME: "Proshanto",
+      LASTNAME: "Saha",
+      email: "invalid-email",
+      consent: true,
+    };
+
+    const expectedResponse: IApiResponse = {
+      status: 400,
+      message: "Invalid email format.",
+    };
+
+    const response = await SendContactEmail(contactProperties);
+    expect(response).toEqual(expectedResponse);
+  });
+
+  it("should handle errors from axios request", async () => {
+    const contactProperties = {
+      FIRSTNAME: "Proshanto",
+      LASTNAME: "Saha",
+      email: "proshantosaha@gmail.com",
+      consent: true,
+    };
+
+    const expectedResponse: IApiResponse = {
+      status: 500,
+      message: "Internal server error",
+    };
+
+    mockedAxios.post.mockRejectedValueOnce(new Error("Internal server error"));
+    mockedHandleError.mockReturnValueOnce(expectedResponse);
+
+    const response = await SendContactEmail(contactProperties);
+    expect(mockedAxios.post).toHaveBeenCalled();
+    expect(mockedHandleError).toHaveBeenCalledWith(
+      new Error("Internal server error")
+    );
+    expect(response).toEqual(expectedResponse);
   });
 });
