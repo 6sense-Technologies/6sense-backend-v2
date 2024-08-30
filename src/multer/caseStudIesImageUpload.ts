@@ -3,7 +3,6 @@ import path from "path";
 import { IProject } from "../models/casestudyModel";
 import upload from "./multerConfig";
 
-// Define the upload fields for the project
 export const handleProjectUploads = upload.fields([
   { name: "logo", maxCount: 1 },
   { name: "imageSrc", maxCount: 1 },
@@ -12,7 +11,7 @@ export const handleProjectUploads = upload.fields([
   { name: "keyFeaturesImage", maxCount: 1 },
   { name: "resultImage", maxCount: 1 },
   { name: "clientImage", maxCount: 1 },
-  { name: "heroInfoImages", maxCount: 5 },
+  { name: "heroInfoImages", maxCount: 3 },
   { name: "aboutInfoImages", maxCount: 4 },
 ]);
 

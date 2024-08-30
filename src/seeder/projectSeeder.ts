@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Project from "../models/casestudyModel";
+import TeamGallery from "../models/teamGalleryModel";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -1255,6 +1256,45 @@ const sampleProjects = [
   },
 ];
 
+const sampleTeamGalleries = [
+  {
+    title: "Dedicated Department workstation",
+    image: "/uploads/gallery1.png",
+  },
+  {
+    title: "Cafeteria",
+    image: "/uploads/gallery2.png",
+  },
+  {
+    title: "Fun playtime",
+    image: "/uploads/gallery3.png",
+  },
+  {
+    title: "Rest Zone",
+    image: "/uploads/gallery4.png",
+  },
+  {
+    title: "Party & Celebration",
+    image: "/uploads/gallery5.png",
+  },
+  {
+    title: "Separate Female corner",
+    image: "/uploads/gallery6.png",
+  },
+  {
+    title: "Dedicated Prayer Zone",
+    image: "/uploads/gallery7.png",
+  },
+  {
+    title: "Yearly Tours",
+    image: "/uploads/gallery8.png",
+  },
+  {
+    title: "Awards",
+    image: "/uploads/gallery9.png",
+  },
+];
+
 const seedDatabase = async (): Promise<void> => {
   try {
     const mongoURI = process.env.MONGO_URI;
@@ -1265,8 +1305,12 @@ const seedDatabase = async (): Promise<void> => {
     await mongoose.connect(mongoURI);
     console.log("Connected to MongoDB");
 
-    await Project.insertMany(sampleProjects);
-    console.log("Sample data inserted");
+
+    // await Project.insertMany(sampleProjects);
+    // console.log("Sample projects inserted");
+
+    await TeamGallery.insertMany(sampleTeamGalleries);
+    console.log("Sample team galleries inserted");
 
     await mongoose.connection.close();
     console.log("Connection closed");
