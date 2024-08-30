@@ -152,7 +152,7 @@ describe("Folder Service", () => {
 
       checkResponse(result, 204, "Folder successfully deleted");
       expect(mockedBrevoClient.delete).toHaveBeenCalledWith(
-        `/contacts/folders/${folderId}`
+        `/contacts/folders/${folderId}`,
       );
     });
 

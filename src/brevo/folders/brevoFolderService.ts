@@ -72,7 +72,7 @@ export const getFolderLists = async (
   folderId: number,
   limit?: number,
   offset?: number,
-  sort?: string
+  sort?: string,
 ): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 

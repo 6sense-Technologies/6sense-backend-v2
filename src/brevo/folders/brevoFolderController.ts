@@ -19,7 +19,7 @@ export const createFolderController = async (
 
 export const getFoldersController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { limit, offset, sort } = req.query;
   const parsedLimit = limit ? Number(limit) : undefined;

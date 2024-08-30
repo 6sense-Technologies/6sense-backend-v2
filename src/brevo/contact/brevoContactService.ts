@@ -58,7 +58,7 @@ export const updateContact = async (
   email?: string,
   attributes?: object,
   listIds?: number[],
-  updateEnabled?: boolean
+  updateEnabled?: boolean,
 ): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 
@@ -76,7 +76,7 @@ export const updateContact = async (
 };
 
 export const deleteContact = async (
-  identifier: string
+  identifier: string,
 ): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 

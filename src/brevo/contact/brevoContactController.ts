@@ -21,7 +21,7 @@ export const getAllContactsController = async (
 
 export const createContactController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { email, attributes, listIds, updateEnabled } = req.body;
   const result = await createContact(email, attributes, listIds, updateEnabled);

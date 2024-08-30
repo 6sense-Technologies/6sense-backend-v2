@@ -23,7 +23,7 @@ export const getAllListsController = async (
 
 export const createListController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { name, folderId } = req.body;
   const result = await createList(name, folderId);

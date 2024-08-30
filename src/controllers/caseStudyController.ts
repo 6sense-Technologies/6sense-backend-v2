@@ -39,7 +39,7 @@ export const createProjectController = async (
 
 export const updateProjectController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   handleProjectUploads(req, res, async () => {
     const { slug } = req.params;

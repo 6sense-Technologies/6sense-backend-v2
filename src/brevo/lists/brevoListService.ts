@@ -50,7 +50,7 @@ export const getList = async (listId: number): Promise<IApiResponse> => {
 export const updateList = async (
   listId: number,
   name: string,
-  folderId: number
+  folderId: number,
 ): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 
@@ -81,7 +81,7 @@ export const getContactsFromList = async (
   modifiedSince?: string,
   limit?: number,
   offset?: number,
-  sort?: string
+  sort?: string,
 ): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 
@@ -109,7 +109,7 @@ export const addContactsToList = async (
       `/contacts/lists/${listId}/contacts/add`,
       {
         emails,
-      }
+      },
     );
     return handleSuccess(response, "Contacts added to the list successfully");
   } catch (error) {

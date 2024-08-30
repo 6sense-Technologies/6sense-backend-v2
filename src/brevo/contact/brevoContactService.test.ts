@@ -128,7 +128,7 @@ describe("Contact Service", () => {
       const result: IApiResponse = await updateContact(
         "123",
         "updated@example.com",
-        { name: "Updated" }
+        { name: "Updated" },
       );
       expect(result.status).toBe(500);
       expect(result.message).toBe("Error");

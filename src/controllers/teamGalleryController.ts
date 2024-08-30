@@ -38,7 +38,7 @@ export const createTeamGalleryController = async (
 
 export const updateTeamGalleryController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   handleTeamGalleryUploads(req, res, async () => {
     const { id } = req.params;
