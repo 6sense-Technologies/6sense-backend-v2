@@ -15,7 +15,7 @@ export const handleProjectUploads = upload.fields([
   { name: "aboutInfoImages", maxCount: 4 },
 ]);
 
-const getRelativePath = (filePath: string | undefined) => {
+const getRelativePath = (filePath: string | undefined): string | undefined => {
   if (!filePath) return undefined;
   return `/uploads/${path.basename(filePath)}`;
 };
@@ -50,24 +50,18 @@ export const processFiles = (req: Request, baseData: any): IProject => {
         solutionImage: files["solutionImage"]
           ? getRelativePath(files["solutionImage"][0].path)
           : baseData.details.solution?.solutionImage,
-        solutionsPoints1: baseData.details.solution.solutionsPoints1,
-        solutionsPoints2: baseData.details.solution.solutionsPoints2,
       },
       keyFeature: {
         ...baseData.details.keyFeature,
         keyFeaturesImage: files["keyFeaturesImage"]
           ? getRelativePath(files["keyFeaturesImage"][0].path)
           : baseData.details.keyFeature?.keyFeaturesImage,
-        keyFeaturesPoints1: baseData.details.keyFeature.keyFeaturesPoints1,
-        keyFeaturesPoints2: baseData.details.keyFeature.keyFeaturesPoints2,
       },
       result: {
         ...baseData.details.result,
         resultImage: files["resultImage"]
           ? getRelativePath(files["resultImage"][0].path)
           : baseData.details.result?.resultImage,
-        resultsPoints1: baseData.details.result.resultsPoints1,
-        resultsPoints2: baseData.details.result.resultsPoints2,
       },
       heroInfo: baseData.details.heroInfo.map((info: any, index: number) => ({
         ...info,
@@ -81,7 +75,6 @@ export const processFiles = (req: Request, baseData: any): IProject => {
           ? getRelativePath(files["aboutInfoImages"][index].path)
           : info.icon,
       })),
-      overviewParagraphs: baseData.details.overviewParagraphs,
     },
   };
 };

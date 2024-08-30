@@ -5,7 +5,7 @@ import { ITeamGallery } from "../models/teamGalleryModel";
 
 export const handleTeamGalleryUploads = upload.single("image");
 
-const getRelativePath = (filePath: string | undefined) => {
+const getRelativePath = (filePath: string | undefined): string | undefined => {
   if (!filePath) return undefined;
   return `/uploads/${path.basename(filePath)}`;
 };
