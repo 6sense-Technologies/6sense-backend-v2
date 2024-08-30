@@ -13,6 +13,7 @@ import caseStudyRoutes from "./routes/caseStudyRoutes";
 import { generateToken } from "./services/authService";
 import mixpanelRoutes from "./mixpanel/mixpanelRoutes";
 import eventsRoutes from "./routes/eventsRoute";
+import teamGalleryRoutes from "./routes/teamGalleryRoutes";
 
 const app = express();
 app.use(bodyParser.json());
@@ -39,6 +40,8 @@ app.use("/brevo", brevoEventRoutes);
 app.use("/", caseStudyRoutes);
 app.use("/mixpanel", mixpanelRoutes);
 app.use("/", eventsRoutes);
+app.use("/", teamGalleryRoutes);
+
 
 
 export default app;
