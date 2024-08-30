@@ -10,9 +10,9 @@ import {
 const router = express.Router();
 
 router.get("/team-gallery/all", getAllTeamGalleriesController);
-router.post("/team-galleries", createTeamGalleryController);
-router.get("/team-galleries/:id", getTeamGalleryByIdController);
-router.put("/team-galleries/:id", updateTeamGalleryController);
-router.delete("/team-galleries/:id", deleteTeamGalleryByIdController);
+router.post("/team-gallery", createTeamGalleryController);
+router.get("/team-gallery/:id", getTeamGalleryByIdController);
+router.put("/team-gallery/:id", updateTeamGalleryController);
+router.delete("/team-gallery/:id", deleteTeamGalleryByIdController);
 
 export default router;
