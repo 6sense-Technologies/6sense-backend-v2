@@ -39,20 +39,6 @@ const mockBrevoClientError = (
   mockedBrevoClient[method].mockRejectedValue(new Error(errorMessage));
 };
 
-const mockSuccessResponse = (message: string) => {
-  return (response: any) => ({
-    status: response.status,
-    message,
-  });
-};
-
-const mockErrorResponse = (status: number, errorMessage: string) => {
-  return (err: Error) => ({
-    status,
-    message: errorMessage || err.message,
-  });
-};
-
 describe("Brevo List Service", () => {
   describe("getAllLists", () => {
     it("should retrieve all lists successfully", async () => {
