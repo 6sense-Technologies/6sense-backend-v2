@@ -736,7 +736,7 @@ const sampleProjects = [
     appName: "Healthcare budget management.",
     logo: "/uploads/muncalogo.png",
     slug: "munca",
-    imageSrc: "/uploads/munaca.png",
+    imageSrc: "/uploads/munca.png",
     details: {
       coloredPartTitle: "Munca-",
       regularTitle: "Infallible Plan Management App For Managing Funds ",

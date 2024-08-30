@@ -60,13 +60,8 @@ export interface IProject extends Document {
   appName: string;
   logo: string;
   slug: string;
-  thumbImage: string;
-  projectOverview: string;
-  about: string;
-  coverImage?: string;
+  imageSrc: string;
   details: IDetails;
-  technologies: string[];
-  industry: string;
 }
 
 const HeroInfoSchema = new Schema<IHeroInfo>({
@@ -105,9 +100,9 @@ const ResultSchema = new Schema<IResult>({
 });
 
 const ClientFeedbackSchema = new Schema<IClientFeedback>({
-  clientNameAndDesignation: { type: String, default: '' },
-  clientImage: { type: String, default: '' },
-  feedback: { type: String, default: '' },
+  clientNameAndDesignation: { type: String },
+  clientImage: { type: String, },
+  feedback: { type: String },
 });
 
 const DetailsSchema = new Schema<IDetails>({
@@ -129,13 +124,8 @@ const ProjectSchema = new Schema<IProject>({
   appName: { type: String },
   logo: { type: String },
   slug: { type: String, unique: true },
-  thumbImage: { type: String },
-  projectOverview: { type: String },
-  about: { type: String },
-  coverImage: { type: String },
+  imageSrc: { type: String },
   details: { type: DetailsSchema },
-  technologies: { type: [String] },
-  industry: { type: String },
 }, { timestamps: true });
 
 export default mongoose.model<IProject>('Project', ProjectSchema);
