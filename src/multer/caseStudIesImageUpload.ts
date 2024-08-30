@@ -65,15 +65,17 @@ export const processFiles = (req: Request, baseData: any): IProject => {
       },
       heroInfo: baseData.details.heroInfo.map((info: any, index: number) => ({
         ...info,
-        icon: files["heroInfoImages"] && files["heroInfoImages"][index]
-          ? getRelativePath(files["heroInfoImages"][index].path)
-          : info.icon,
+        icon:
+          files["heroInfoImages"] && files["heroInfoImages"][index]
+            ? getRelativePath(files["heroInfoImages"][index].path)
+            : info.icon,
       })),
       aboutInfo: baseData.details.aboutInfo.map((info: any, index: number) => ({
         ...info,
-        icon: files["aboutInfoImages"] && files["aboutInfoImages"][index]
-          ? getRelativePath(files["aboutInfoImages"][index].path)
-          : info.icon,
+        icon:
+          files["aboutInfoImages"] && files["aboutInfoImages"][index]
+            ? getRelativePath(files["aboutInfoImages"][index].path)
+            : info.icon,
       })),
     },
   };

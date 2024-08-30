@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Project from "../models/casestudyModel";
 import TeamGallery from "../models/teamGalleryModel";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 const sampleProjects = [
@@ -61,7 +61,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           subtitle: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
         },
         {
           icon: "/uploads/layers1.svg",
@@ -173,7 +173,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           subtitle: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
         },
         {
           icon: "/uploads/layers1.svg",
@@ -278,7 +278,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           subtitle: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
         },
         {
           icon: "/uploads/layers1.svg",
@@ -386,7 +386,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -493,7 +493,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -583,7 +583,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -688,7 +688,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -789,7 +789,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -898,7 +898,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -1003,7 +1003,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -1098,7 +1098,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -1145,7 +1145,7 @@ const sampleProjects = [
       },
     },
   },
-  
+
   {
     id: "12",
     appName: "All-in-one Quran app for daily guidance.",
@@ -1201,7 +1201,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
-          title:"REACT, NODE JS, PHYTHON",
+          title: "REACT, NODE JS, PHYTHON",
           subtitle: "Technologies",
         },
         {
@@ -1304,7 +1304,6 @@ const seedDatabase = async (): Promise<void> => {
 
     await mongoose.connect(mongoURI);
     console.log("Connected to MongoDB");
-
 
     await Project.insertMany(sampleProjects);
     console.log("Sample projects inserted");

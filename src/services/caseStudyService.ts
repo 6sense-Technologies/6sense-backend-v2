@@ -88,11 +88,10 @@ export const getProjectBySlug = async (slug: string): Promise<IApiResponse> => {
         { status: 200, data: project },
         "Project details retrieved successfully"
       );
-    } 
-      return handleError({
-        response: { status: 404, data: { message: "Project not found" } },
-      });
-    
+    }
+    return handleError({
+      response: { status: 404, data: { message: "Project not found" } },
+    });
   } catch (error: any) {
     return handleError(error);
   }
@@ -141,10 +140,9 @@ export const deleteProjectBySlug = async (
         "Project successfully deleted"
       );
     }
-      return handleError({
-        response: { status: 404, data: { message: "Project not found" } },
-      });
-    
+    return handleError({
+      response: { status: 404, data: { message: "Project not found" } },
+    });
   } catch (error: any) {
     return handleError(error);
   }

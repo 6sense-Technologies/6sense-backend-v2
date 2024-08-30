@@ -7,7 +7,10 @@ import {
   deleteTeamGalleryById,
 } from "../services/teamGalleryService";
 import { IApiResponse } from "../types";
-import { handleTeamGalleryUploads, processTeamGalleryFiles } from "../multer/teamGalleryImageUpload";
+import {
+  handleTeamGalleryUploads,
+  processTeamGalleryFiles,
+} from "../multer/teamGalleryImageUpload";
 import fs from "fs";
 import path from "path";
 import { ITeamGallery } from "../models/teamGalleryModel";
@@ -39,7 +42,10 @@ export const updateTeamGalleryController = async (
 ): Promise<void> => {
   handleTeamGalleryUploads(req, res, async () => {
     const { id } = req.params;
-    const updateData: Partial<ITeamGallery> = processTeamGalleryFiles(req, req.body);
+    const updateData: Partial<ITeamGallery> = processTeamGalleryFiles(
+      req,
+      req.body
+    );
 
     const gallery: IApiResponse = await getTeamGalleryById(id);
 
@@ -49,9 +55,7 @@ export const updateTeamGalleryController = async (
     }
 
     const oldGalleryData = gallery.data;
-    const filesToDelete = [
-      oldGalleryData.image,
-    ].filter(Boolean) as string[];
+    const filesToDelete = [oldGalleryData.image].filter(Boolean) as string[];
 
     filesToDelete.forEach((filePath) => {
       if (filePath) {
@@ -96,9 +100,7 @@ export const deleteTeamGalleryByIdController = async (
 
   const galleryData = gallery.data;
 
-  const filesToDelete = [
-    galleryData.image,
-  ].filter(Boolean) as string[];
+  const filesToDelete = [galleryData.image].filter(Boolean) as string[];
 
   filesToDelete.forEach((filePath) => {
     if (filePath) {

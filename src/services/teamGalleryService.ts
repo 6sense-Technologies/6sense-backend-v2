@@ -29,66 +29,62 @@ export const getAllTeamGalleries = async (): Promise<IApiResponse> => {
 };
 
 export const getTeamGalleryById = async (id: string): Promise<IApiResponse> => {
-    try {
-      const gallery = await TeamGallery.findById(id);
-      if (gallery) {
-        return handleSuccess(
-          { status: 200, data: gallery },
-          "Gallery details retrieved successfully"
-        );
-      }
-      return handleError({
-        response: { status: 404, data: { message: "Gallery not found" } },
-      });
-    } catch (error: any) {
-      return handleError(error);
-    }
-  };
-  
-
-  export const updateTeamGallery = async (
-    id: string,
-    updateData: Partial<ITeamGallery>
-  ): Promise<IApiResponse> => {
-    try {
-  
-      const updatedGallery = await TeamGallery.findByIdAndUpdate(
-        id,
-        { $set: updateData },
-        { new: true }
+  try {
+    const gallery = await TeamGallery.findById(id);
+    if (gallery) {
+      return handleSuccess(
+        { status: 200, data: gallery },
+        "Gallery details retrieved successfully"
       );
-  
-      if (updatedGallery) {
-        return handleSuccess(
-          { status: 200, data: updatedGallery },
-          "Gallery successfully updated"
-        );
-      }
-      return handleError({
-        response: { status: 404, data: { message: "Gallery not found" } },
-      });
-    } catch (error: any) {
-      return handleError(error);
     }
-  };
-  
+    return handleError({
+      response: { status: 404, data: { message: "Gallery not found" } },
+    });
+  } catch (error: any) {
+    return handleError(error);
+  }
+};
 
-  export const deleteTeamGalleryById = async (
-    id: string
-  ): Promise<IApiResponse> => {
-    try {
-      const deletedGallery = await TeamGallery.findByIdAndDelete(id);
-      if (deletedGallery) {
-        return handleSuccess(
-          { status: 200, data: {} },
-          "Gallery successfully deleted"
-        );
-      }
-      return handleError({
-        response: { status: 404, data: { message: "Gallery not found" } },
-      });
-    } catch (error: any) {
-      return handleError(error);
+export const updateTeamGallery = async (
+  id: string,
+  updateData: Partial<ITeamGallery>
+): Promise<IApiResponse> => {
+  try {
+    const updatedGallery = await TeamGallery.findByIdAndUpdate(
+      id,
+      { $set: updateData },
+      { new: true }
+    );
+
+    if (updatedGallery) {
+      return handleSuccess(
+        { status: 200, data: updatedGallery },
+        "Gallery successfully updated"
+      );
     }
-  };
-  
+    return handleError({
+      response: { status: 404, data: { message: "Gallery not found" } },
+    });
+  } catch (error: any) {
+    return handleError(error);
+  }
+};
+
+export const deleteTeamGalleryById = async (
+  id: string
+): Promise<IApiResponse> => {
+  try {
+    const deletedGallery = await TeamGallery.findByIdAndDelete(id);
+    if (deletedGallery) {
+      return handleSuccess(
+        { status: 200, data: {} },
+        "Gallery successfully deleted"
+      );
+    }
+    return handleError({
+      response: { status: 404, data: { message: "Gallery not found" } },
+    });
+  } catch (error: any) {
+    return handleError(error);
+  }
+};

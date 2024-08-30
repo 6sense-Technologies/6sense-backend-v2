@@ -1,10 +1,14 @@
 import { Request, Response } from "express";
-import { updateUserProfile, trackUserEvent, mergeIdentities } from "./mixpanelService";
+import {
+  updateUserProfile,
+  trackUserEvent,
+  mergeIdentities,
+} from "./mixpanelService";
 import { v4 as uuidv4 } from "uuid";
 
 export const handleTrackEventByMixpanel = async (
   req: Request,
-  res: Response,
+  res: Response
 ): Promise<{ status: number; message: string } | void> => {
   const {
     event_name: eventName,
@@ -19,15 +23,27 @@ export const handleTrackEventByMixpanel = async (
     const previousDistinctId = req.cookies.distinctId;
 
     try {
-      const updateProfileResponse = await updateUserProfile(distinctId, contactProperties);
+      const updateProfileResponse = await updateUserProfile(
+        distinctId,
+        contactProperties
+      );
       if (updateProfileResponse.status !== 200) {
-        return { status: updateProfileResponse.status, message: "Failed to update profile in Mixpanel" };
+        return {
+          status: updateProfileResponse.status,
+          message: "Failed to update profile in Mixpanel",
+        };
       }
 
       if (previousDistinctId) {
-        const aliasResponse = await mergeIdentities(previousDistinctId, distinctId);
+        const aliasResponse = await mergeIdentities(
+          previousDistinctId,
+          distinctId
+        );
         if (aliasResponse.status !== 200) {
-          return { status: aliasResponse.status, message: "Failed to create alias in Mixpanel" };
+          return {
+            status: aliasResponse.status,
+            message: "Failed to create alias in Mixpanel",
+          };
         }
       }
     } catch (error) {
@@ -36,19 +52,27 @@ export const handleTrackEventByMixpanel = async (
   }
 
   try {
-    const trackEventResponse = await trackUserEvent(distinctId, eventName, eventProperties);
+    const trackEventResponse = await trackUserEvent(
+      distinctId,
+      eventName,
+      eventProperties
+    );
     if (trackEventResponse.status !== 200) {
-      return { status: trackEventResponse.status, message: "Failed to track event in Mixpanel" };
+      return {
+        status: trackEventResponse.status,
+        message: "Failed to track event in Mixpanel",
+      };
     }
   } catch (error) {
     return { status: 500, message: "Internal server error in Mixpanel" };
   }
-  res.cookie("distinctId", distinctId, { maxAge: 365 * 24 * 60 * 60 * 1000, httpOnly: true });
+  res.cookie("distinctId", distinctId, {
+    maxAge: 365 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  });
 
   return { status: 200, message: "Event tracked successfully in Mixpanel" };
 };
-
-
 
 export const handleClearDistinctId = (req: Request, res: Response): void => {
   res.cookie("distinctId", "", { maxAge: 0, httpOnly: true });
