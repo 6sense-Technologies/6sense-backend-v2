@@ -70,7 +70,7 @@ export const updateTeamGalleryController = async (
 
 export const getAllTeamGalleriesController = async (
   _req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const result: IApiResponse = await getAllTeamGalleries();
   res.status(result.status).json(result);

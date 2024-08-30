@@ -30,7 +30,7 @@ export const createContactController = async (
 
 export const getContactByIdController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { identifier } = req.params;
   const result = await getContactById(identifier);

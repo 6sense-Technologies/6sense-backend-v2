@@ -32,7 +32,7 @@ export const createListController = async (
 
 export const getListController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { listId } = req.params;
   const result = await getList(Number(listId));
