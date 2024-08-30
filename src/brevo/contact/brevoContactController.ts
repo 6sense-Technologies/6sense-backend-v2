@@ -39,7 +39,7 @@ export const getContactByIdController = async (
 
 export const updateContactController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { identifier } = req.params;
   const { email, attributes, listIds, updateEnabled } = req.body;
@@ -55,7 +55,7 @@ export const updateContactController = async (
 
 export const deleteContactController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { identifier } = req.params;
   const result = await deleteContact(identifier);

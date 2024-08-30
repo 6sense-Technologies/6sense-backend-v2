@@ -31,7 +31,7 @@ export const getFoldersController = async (
 
 export const getFolderController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { folderId } = req.params;
   const result = await getFolder(Number(folderId));
@@ -40,7 +40,7 @@ export const getFolderController = async (
 
 export const updateFolderController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { folderId } = req.params;
   const { name } = req.body;
@@ -50,7 +50,7 @@ export const updateFolderController = async (
 
 export const deleteFolderController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { folderId } = req.params;
   const result = await deleteFolder(Number(folderId));
@@ -59,7 +59,7 @@ export const deleteFolderController = async (
 
 export const getFolderListsController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { folderId } = req.params;
   const { limit, offset, sort } = req.query;

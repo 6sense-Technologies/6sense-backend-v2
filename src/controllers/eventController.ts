@@ -3,9 +3,8 @@ import { handleTrackEventByMixpanel } from "../mixpanel/mixpanelController";
 import { handleCreateEventByBrevo } from "../brevo/events/brevoEventController";
 export const handleCreateEvent = async (
   req: Request,
-  res: Response,
+  res: Response
 ): Promise<void> => {
-
   const mixpanelResult = await handleTrackEventByMixpanel(req, res);
 
   if (mixpanelResult?.status !== 200) {

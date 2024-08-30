@@ -78,7 +78,7 @@ export const getAllTeamGalleriesController = async (
 
 export const getTeamGalleryByIdController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { id } = req.params;
   const result: IApiResponse = await getTeamGalleryById(id);
@@ -87,7 +87,7 @@ export const getTeamGalleryByIdController = async (
 
 export const deleteTeamGalleryByIdController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { id } = req.params;
 
