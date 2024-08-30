@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const handleTrackEventByMixpanel = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<{ status: number; message: string } | void> => {
   const {
     event_name: eventName,
@@ -25,7 +25,7 @@ export const handleTrackEventByMixpanel = async (
     try {
       const updateProfileResponse = await updateUserProfile(
         distinctId,
-        contactProperties
+        contactProperties,
       );
       if (updateProfileResponse.status !== 200) {
         return {
@@ -37,7 +37,7 @@ export const handleTrackEventByMixpanel = async (
       if (previousDistinctId) {
         const aliasResponse = await mergeIdentities(
           previousDistinctId,
-          distinctId
+          distinctId,
         );
         if (aliasResponse.status !== 200) {
           return {
@@ -55,7 +55,7 @@ export const handleTrackEventByMixpanel = async (
     const trackEventResponse = await trackUserEvent(
       distinctId,
       eventName,
-      eventProperties
+      eventProperties,
     );
     if (trackEventResponse.status !== 200) {
       return {

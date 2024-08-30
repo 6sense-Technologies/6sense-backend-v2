@@ -9,7 +9,7 @@ import {
 
 export const getAllContactsController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { limit, offset, sort } = req.query;
   const parsedLimit = limit ? Number(limit) : undefined;
@@ -48,7 +48,7 @@ export const updateContactController = async (
     email,
     attributes,
     listIds,
-    updateEnabled
+    updateEnabled,
   );
   res.status(result.status).json(result);
 };

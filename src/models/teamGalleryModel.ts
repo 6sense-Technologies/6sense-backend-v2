@@ -1,4 +1,4 @@
-import mongoose,{ Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface ITeamGallery extends Document {
   title: string;
@@ -16,4 +16,4 @@ const teamGallerySchema = new Schema<ITeamGallery>({
   },
 });
 
-export default  mongoose.model<ITeamGallery>("TeamGallery", teamGallerySchema);
+export default mongoose.model<ITeamGallery>("TeamGallery", teamGallerySchema);

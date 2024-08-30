@@ -27,7 +27,7 @@ const deleteFile = (filePath: string): void => {
 
 export const createProjectController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   handleProjectUploads(req, res, async () => {
     const projectData: IProject = processFiles(req, req.body);

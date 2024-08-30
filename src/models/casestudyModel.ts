@@ -128,7 +128,7 @@ const ProjectSchema = new Schema<IProject>(
     imageSrc: { type: String },
     details: { type: DetailsSchema },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model<IProject>("Project", ProjectSchema);

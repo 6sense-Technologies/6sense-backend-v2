@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const handleCreateEventByBrevo = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<{ status: number; message: string } | void> => {
   const {
     event_name,

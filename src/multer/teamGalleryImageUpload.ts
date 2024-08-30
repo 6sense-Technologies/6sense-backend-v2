@@ -12,7 +12,7 @@ const getRelativePath = (filePath: string | undefined): string | undefined => {
 
 export const processTeamGalleryFiles = (
   req: Request,
-  baseData: any
+  baseData: any,
 ): ITeamGallery => {
   const file = req.file;
 

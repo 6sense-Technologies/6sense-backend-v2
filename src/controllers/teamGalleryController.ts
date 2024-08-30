@@ -26,7 +26,7 @@ const deleteFile = (filePath: string): void => {
 
 export const createTeamGalleryController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   handleTeamGalleryUploads(req, res, async () => {
     const galleryData: ITeamGallery = processTeamGalleryFiles(req, req.body);
@@ -44,7 +44,7 @@ export const updateTeamGalleryController = async (
     const { id } = req.params;
     const updateData: Partial<ITeamGallery> = processTeamGalleryFiles(
       req,
-      req.body
+      req.body,
     );
 
     const gallery: IApiResponse = await getTeamGalleryById(id);
