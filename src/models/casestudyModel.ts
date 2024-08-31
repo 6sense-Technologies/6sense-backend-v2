@@ -3,7 +3,6 @@ import mongoose, { Schema, Document } from "mongoose";
 interface IHeroInfo {
   icon: string;
   alt: string;
-  total: number;
   title: string;
   subtitle: string;
 }
@@ -67,7 +66,6 @@ export interface IProject extends Document {
 const HeroInfoSchema = new Schema<IHeroInfo>({
   icon: { type: String },
   alt: { type: String },
-  total: { type: Number },
   title: { type: String },
   subtitle: { type: String },
 });
