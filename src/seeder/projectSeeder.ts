@@ -19,17 +19,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "5 DEVELOPERS",
+          title: "5 DEVELOPERS",
           subtitle: "We had three developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "13 SPRINTS",
+          title: "13 SPRINTS",
           subtitle: "This product ran for total 13 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "5 MONTHS",
           title: "5 MONTHS",
           subtitle:
             "The total duration of the development timeline was 5 months.",
@@ -58,6 +61,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           subtitle: "Technologies",
+          title: "NEST JS, NEXT JS, MONGODB",
           title: "NEST JS, NEXT JS, MONGODB",
         },
         {
@@ -108,7 +112,9 @@ const sampleProjects = [
       },
       clientFeedback: {
         clientNameAndDesignation: "Gabriel Sotomayor, CEO, Impromek Inc.",
+        clientNameAndDesignation: "Gabriel Sotomayor, CEO, Impromek Inc.",
         clientImage: "",
+        feedback: "The solution 6sense Technologies came up with to the problem was truly innovative and first in class. Their strong technical skills and speed of development are super impressive.",
         feedback: "The solution 6sense Technologies came up with to the problem was truly innovative and first in class. Their strong technical skills and speed of development are super impressive.",
       },
     },
@@ -128,6 +134,7 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "5 DEVELOPERS",
+          title: "5 DEVELOPERS",
           subtitle: "We had three developers, one SQA and one scrum master.",
         },
         {
@@ -135,12 +142,16 @@ const sampleProjects = [
           alt: "Sprints",
           title: "30+ SPRINTS",
           subtitle: "This product ran for total 30+ sprints.",
+          title: "30+ SPRINTS",
+          subtitle: "This product ran for total 30+ sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
           title: "15+ MONTHS",
+          title: "15+ MONTHS",
           subtitle:
+            "The total duration of the development timeline was 15+ months.",
             "The total duration of the development timeline was 15+ months.",
         },
       ],
@@ -162,17 +173,20 @@ const sampleProjects = [
           alt: "Duration",
           subtitle: "Duration",
           title: "15+ MONTHS",
+          title: "15+ MONTHS",
         },
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
           subtitle: "Technologies",
           title: "NEST JS, NEXT JS, PYTHON",
+          title: "NEST JS, NEXT JS, PYTHON",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Industry",
           subtitle: "Industry",
+          title: "EV CHARGING",
           title: "EV CHARGING",
         },
       ],
@@ -213,6 +227,11 @@ const sampleProjects = [
       //   clientImage: "",
       //   feedback: "",
       // },
+      // clientFeedback: {
+      //   clientNameAndDesignation: "",
+      //   clientImage: "",
+      //   feedback: "",
+      // },
     },
   },
 
@@ -231,10 +250,14 @@ const sampleProjects = [
           alt: "Developers",
           title: "6 DEVELOPERS",
           subtitle: "We had 4 developers, one SQA and one scrum master.",
+          title: "6 DEVELOPERS",
+          subtitle: "We had 4 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
+          title: "16 SPRINTS",
+          subtitle: "This product ran for total 16 sprints.",
           title: "16 SPRINTS",
           subtitle: "This product ran for total 16 sprints.",
         },
@@ -242,7 +265,9 @@ const sampleProjects = [
           icon: "/uploads/clock.svg",
           alt: "Duration",
           title: "8 MONTHS",
+          title: "8 MONTHS",
           subtitle:
+            "The total duration of the development timeline was 8 months.",
             "The total duration of the development timeline was 8 months.",
         },
       ],
@@ -258,17 +283,20 @@ const sampleProjects = [
           alt: "Developers",
           subtitle: "Team size",
           title: "6 SPECIALISTS",
+          title: "6 SPECIALISTS",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
           subtitle: "Duration",
           title: "8 MONTHS",
+          title: "8 MONTHS",
         },
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
           subtitle: "Technologies",
+          title: "NEST JS, NEXT JS, PYTHON",
           title: "NEST JS, NEXT JS, PYTHON",
         },
         {
@@ -316,7 +344,9 @@ const sampleProjects = [
       },
       clientFeedback: {
         clientNameAndDesignation: "Sid, CEO, Breaking Mars Inc.",
+        clientNameAndDesignation: "Sid, CEO, Breaking Mars Inc.",
         clientImage: "",
+        feedback: "Working with LinkedIn APIs was a challenging task due to their frequent changes. Additionally, we needed to develop an algorithm that would prevent users from being banned on LinkedIn. The 6sense team embraced the challenge and successfully delivered. Their exceptional technical expertise and rapid development pace are truly impressive.",
         feedback: "Working with LinkedIn APIs was a challenging task due to their frequent changes. Additionally, we needed to develop an algorithm that would prevent users from being banned on LinkedIn. The 6sense team embraced the challenge and successfully delivered. Their exceptional technical expertise and rapid development pace are truly impressive.",
       },
     },
@@ -336,17 +366,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "5 DEVELOPERS",
+          title: "5 DEVELOPERS",
           subtitle: "We had three developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "13 SPRINTS",
+          title: "13 SPRINTS",
           subtitle: "This product ran for total 13 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "14 MONTHS",
           title: "14 MONTHS",
           subtitle:
             "The total duration of the development timeline was 14 months.",
@@ -375,11 +408,13 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           title: "NEST JS, NEXT JS, MONGODB",
+          title: "NEST JS, NEXT JS, MONGODB",
           subtitle: "Technologies",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Industry",
+          title: "PROJECT MANAGEMENT",
           title: "PROJECT MANAGEMENT",
           subtitle: "Industry",
         },
@@ -421,7 +456,9 @@ const sampleProjects = [
       },
       clientFeedback: {
         clientNameAndDesignation: "MD Alayob, CEO, Itcan Inc",
+        clientNameAndDesignation: "MD Alayob, CEO, Itcan Inc",
         clientImage: "",
+        feedback: "We interviewed different providers and selected 6sense because of two main factors: their proven track record of success developing businesses, and the leaderships passion and commitment to building great products.",
         feedback: "We interviewed different providers and selected 6sense because of two main factors: their proven track record of success developing businesses, and the leaderships passion and commitment to building great products.",
       },
     },
@@ -440,17 +477,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "5 DEVELOPERS",
+          title: "5 DEVELOPERS",
           subtitle: "We had three developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "5 SPRINTS",
+          title: "5 SPRINTS",
           subtitle: "This product ran for total 5 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "5 MONTHS",
           title: "5 MONTHS",
           subtitle:
             "The total duration of the development timeline was 5 months.",
@@ -478,6 +518,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
+          title: "NEST JS, NEXT JS, MONGODB",
           title: "NEST JS, NEXT JS, MONGODB",
           subtitle: "Technologies",
         },
@@ -511,6 +552,11 @@ const sampleProjects = [
       //   clientImage: "",
       //   feedback: "",
       // },
+      // clientFeedback: {
+      //   clientNameAndDesignation: "",
+      //   clientImage: "",
+      //   feedback: "",
+      // },
     },
   },
   {
@@ -528,10 +574,14 @@ const sampleProjects = [
           alt: "Developers",
           title: "8 DEVELOPERS",
           subtitle: "We had 6 developers, one SQA and one scrum master.",
+          title: "8 DEVELOPERS",
+          subtitle: "We had 6 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
+          title: "12 SPRINTS",
+          subtitle: "This product ran for total 12 sprints.",
           title: "12 SPRINTS",
           subtitle: "This product ran for total 12 sprints.",
         },
@@ -539,7 +589,9 @@ const sampleProjects = [
           icon: "/uploads/clock.svg",
           alt: "Duration",
           title: "12 MONTHS",
+          title: "12 MONTHS",
           subtitle:
+            "The total duration of the development timeline was 12 months.",
             "The total duration of the development timeline was 12 months.",
         },
       ],
@@ -554,17 +606,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "8 SPECIALISTS",
+          title: "8 SPECIALISTS",
           subtitle: "Team size",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
           title: "12 MONTHS",
+          title: "12 MONTHS",
           subtitle: "Duration",
         },
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
+          title: "REACT, NODE JS, PYTHON",
           title: "REACT, NODE JS, PYTHON",
           subtitle: "Technologies",
         },
@@ -612,6 +667,11 @@ const sampleProjects = [
       //   clientImage: "",
       //   feedback: "",
       // },
+      // clientFeedback: {
+      //   clientNameAndDesignation: "",
+      //   clientImage: "",
+      //   feedback: "",
+      // },
     },
   },
   {
@@ -629,17 +689,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "6 DEVELOPERS",
+          title: "6 DEVELOPERS",
           subtitle: "We had 4 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "11 SPRINTS",
+          title: "11 SPRINTS",
           subtitle: "This product ran for total 11 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "4.5 MONTHS",
           title: "4.5 MONTHS",
           subtitle:
             "The total duration of the development timeline was 4.5 months.",
@@ -648,6 +711,7 @@ const sampleProjects = [
       overviewParagraphs: [
         "Forget Me Not is a web-based tool that lets users send messages and memories privately to their contact list today for future delivery. It preserves users’ precious memories and shares their legacy and wisdom for tomorrow. It simply completes the user’s dearest goals before drawing their last breath. It allows users to upload customized messages, pictures, surprises, memories, and greetings and schedule delivery to send them to their loved ones. With this app, users can never miss a moment to celebrate special occasions. Users can stay on top of their minds with their relationships through this timely website. They can schedule a special surprise or message for their loved one’s upcoming celebrations.",
       ],
+      overviewImage: "/uploads/overviewForget.png",
       overviewImage: "/uploads/overviewForget.png",
       aboutParagraph:
         "Our dedicated team began their process by collecting detailed information on the user’s wants and needs. When designing this app, we kept the site’s visitors’ feelings in mind. We conducted a series of interviews to understand why some people have difficulty expressing their emotions. Most of those who took part in the interviews were patients. They didn’t want to lose touch with those who cared about them even after they passed away. So, based on the insights gained from the interviews, our team of professionals has developed a responsive and easy-to-navigate website. We tested our application after learning about the problems faced by our potential users and developing a plan to address those difficulties. The final step is to upload the website to a server that is quick, safe, and scalable. With the help of a user-centered design process, we were able to create a layout for the website that was both functional and straightforward. Through our streamlined interface and intuitive menu structure, we make it easy for visitors to complete their intended tasks.",
@@ -668,6 +732,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           title: "REACT, NODE JS, PYTHON",
+          title: "REACT, NODE JS, PYTHON",
           subtitle: "Technologies",
         },
         {
@@ -683,6 +748,7 @@ const sampleProjects = [
           "We have provided many options for customers to communicate emotions to their loved ones. Users can add text, photos, and videos to their events after setting the message and attaching it to a date-specific contact. The recipient receives an automatic notification and can download the text or attachments.",
         ],
         solutionImage: "/uploads/solutionForget.png",
+        solutionImage: "/uploads/solutionForget.png",
       },
       keyFeature: {
         description:
@@ -692,6 +758,7 @@ const sampleProjects = [
           "Users can edit the event at any moment to add or remove memories.",
           "Users can schedule events for the upcoming year in advance to save time and avoid duplicating efforts.",
         ],
+        keyFeaturesImage: "/uploads/keyfuncForget.png",
         keyFeaturesImage: "/uploads/keyfuncForget.png",
       },
       result: {
@@ -706,7 +773,9 @@ const sampleProjects = [
       },
       clientFeedback: {
         clientNameAndDesignation: "Chris, CTO, Forget Me Not",
+        clientNameAndDesignation: "Chris, CTO, Forget Me Not",
         clientImage: "",
+        feedback: "The 6sense team exceeded our expectations. Their ability to adapt and solve complex problems was outstanding. We're thrilled with the results.",
         feedback: "The 6sense team exceeded our expectations. Their ability to adapt and solve complex problems was outstanding. We're thrilled with the results.",
       },
     },
@@ -725,17 +794,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "6 DEVELOPERS",
+          title: "6 DEVELOPERS",
           subtitle: "We had 4 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "7 SPRINTS",
+          title: "7 SPRINTS",
           subtitle: "This product ran for total 7 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "3 MONTHS",
           title: "3 MONTHS",
           subtitle:
             "The total duration of the development timeline was 3 months.",
@@ -765,6 +837,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
+          title: "SWIFT, NODE JS",
           title: "SWIFT, NODE JS",
           subtitle: "Technologies",
         },
@@ -816,6 +889,11 @@ const sampleProjects = [
       //   clientImage: "",
       //   feedback: "",
       // },
+      // clientFeedback: {
+      //   clientNameAndDesignation: "",
+      //   clientImage: "",
+      //   feedback: "",
+      // },
     },
   },
   {
@@ -833,17 +911,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "9 DEVELOPERS",
+          title: "9 DEVELOPERS",
           subtitle: "We had 7 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "24 SPRINTS",
+          title: "24 SPRINTS",
           subtitle: "This product ran for total 24 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "8 MONTHS",
           title: "8 MONTHS",
           subtitle:
             "The total duration of the development timeline was 8 months.",
@@ -871,6 +952,7 @@ const sampleProjects = [
         {
           icon: "/uploads/code.svg",
           alt: "Technologies",
+          title: "NEST JS, NEXT JS, MONGODB",
           title: "NEST JS, NEXT JS, MONGODB",
           subtitle: "Technologies",
         },
@@ -935,17 +1017,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "7 DEVELOPERS",
+          title: "7 DEVELOPERS",
           subtitle: "We had 5 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "7 SPRINTS",
+          title: "7 SPRINTS",
           subtitle: "This product ran for total 7 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "5 MONTHS",
           title: "5 MONTHS",
           subtitle:
             "The total duration of the development timeline was 5 months.",
@@ -954,6 +1039,7 @@ const sampleProjects = [
       overviewParagraphs: [
         "Introspection is a mood tracker AI app designed to help users manage their daily routines and improve their mental health. With enhanced features of recording moods by voice, users can easily record their emotions by recording their voices. This advanced AI app can immediately identify the user’s mood based on the tone of their voice. For illustration purposes, users are experiencing boredom today. They record their voice, and the screen displays the message, “you are bored today.”",
       ],
+      overviewImage: "/uploads/overviewIntrospection.png",
       overviewImage: "/uploads/overviewIntrospection.png",
       aboutParagraph:
         "Introspection is an AI-powered mood-tracking app that acts as an aid for those struggling with their thoughts and feelings. Using the app, people can keep track of their internal sensations and share an overview of their emotions. This app utilizes AI to help users track moods and emotional health. Our professional team initially looked into an algorithm for detecting a user’s intentions to create a user-friendly interface and give clients a better experience when using the app.",
@@ -974,6 +1060,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           title: "REACT, NODE JS, PYTHON",
+          title: "REACT, NODE JS, PYTHON",
           subtitle: "Technologies",
         },
         {
@@ -986,6 +1073,7 @@ const sampleProjects = [
       solution: {
         description:
           "The goal of Introspection is to facilitate the discovery of one’s emotional state through voice recordings. Our professional team created this helpful mood-tracking software, which features a user-centered design and an approachable interface so that users will feel comfortable trusting it as a personal assistant. Even though most people stayed indoors during covid-19, keeping a daily mood journal was still essential. Thus, the Introspection app was a great boon at the right time. Users can keep a daily mood log and receive monthly reports, and In the future, you can utilize them to demonstrate to future generations what it was like to live during a pandemic.",
+        solutionImage: "/uploads/solutionIntrospection.png",
         solutionImage: "/uploads/solutionIntrospection.png",
       },
       keyFeature: {
@@ -1001,11 +1089,17 @@ const sampleProjects = [
           "The app offers several ways to analyze the data. To help users better manage their mental health, we integrated a calendar into the app as a helpful tool. Users can know about the associated feelings on any given day with only a few taps. The app’s “Statistics and Calendar” section allows users to track their emotional and behavioral states across time, making it easier to see trends. When a user feels down, they can look back on their past emotions and use that information to help them manage their depression.",
         ],
         keyFeaturesImage: "/uploads/keyfuncIntrospection.png",
+        keyFeaturesImage: "/uploads/keyfuncIntrospection.png",
       },
       result: {
         description:
           "Introspection software is among the most convenient tools for maintaining mental states. This app offers a “Calendar” feature that keeps track of one’s emotional and behavioral states throughout time. Users can look back on their former emotions for insight into how to handle their current depression. They can also utilize these tools to convey to future generations how they felt or how they dealt with the emotional turmoil of a pandemic. Aside from the covid pandemic, the app also allows users to log their emotions daily, which can help maintain positive mental health.",
       },
+      // clientFeedback: {
+      //   clientNameAndDesignation: "",
+      //   clientImage: "",
+      //   feedback: "",
+      // },
       // clientFeedback: {
       //   clientNameAndDesignation: "",
       //   clientImage: "",
@@ -1034,10 +1128,13 @@ const sampleProjects = [
           alt: "Sprints",
           title: "2 SPRINTS",
           subtitle: "This product ran for total 2 sprints.",
+          title: "2 SPRINTS",
+          subtitle: "This product ran for total 2 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "2 MONTHS",
           title: "2 MONTHS",
           subtitle:
             "The total duration of the development timeline was 2 months.",
@@ -1046,6 +1143,7 @@ const sampleProjects = [
       overviewParagraphs: [
         "VoomNow is an easy-to-use and portable web-based audio recording tool. Voom Now is a convenient application that works in a user’s web browser. This helpful app lets users rapidly record and share high-quality audio clips (up to five minutes long) across all major social media sites. Users of Voom can record audio and download the recorded mp3 in High Quality or upload it to the online library.",
       ],
+      overviewImage: "/uploads/overviewVoom.png",
       overviewImage: "/uploads/overviewVoom.png",
       aboutParagraph:
         "Our professional team developed a simple and minimal UI design that facilitates all the essential elements the user needs to have a cognitive experience. Our goal is to ensure that every one of our Voom Now customers are delighted with our service. Because of its clean and uncluttered user interface, this application gives off an air of professionalism and makes its use a breeze.",
@@ -1066,6 +1164,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           title: "NEST JS, NEXT JS, MONGODB",
+          title: "NEST JS, NEXT JS, MONGODB",
           subtitle: "Technologies",
         },
         {
@@ -1084,6 +1183,7 @@ const sampleProjects = [
           "After recording the voice, the user can quickly download the HD audio and access it anytime.",
         ],
         solutionImage: "/uploads/solutionVoom.png",
+        solutionImage: "/uploads/solutionVoom.png",
       },
       keyFeature: {
         description:
@@ -1095,6 +1195,7 @@ const sampleProjects = [
           "With a recording large clips facility, this tool also provides a lifetime session to record audio.",
         ],
         keyFeaturesImage: "/uploads/keyfuncVoom.png",
+        keyFeaturesImage: "/uploads/keyfuncVoom.png",
       },
       result: {
         description:
@@ -1105,6 +1206,11 @@ const sampleProjects = [
           "Its multiple integrations make it miles ahead of any standard recording app.",
         ],
       },
+      // clientFeedback: {
+      //   clientNameAndDesignation: "",
+      //   clientImage: "",
+      //   feedback: "",
+      // },
       // clientFeedback: {
       //   clientNameAndDesignation: "",
       //   clientImage: "",
@@ -1127,17 +1233,20 @@ const sampleProjects = [
           icon: "/uploads/users.svg",
           alt: "Developers",
           title: "7 DEVELOPERS",
+          title: "7 DEVELOPERS",
           subtitle: "We had 5 developers, one SQA and one scrum master.",
         },
         {
           icon: "/uploads/layers1.svg",
           alt: "Sprints",
           title: "13 SPRINTS",
+          title: "13 SPRINTS",
           subtitle: "This product ran for total 13 sprints.",
         },
         {
           icon: "/uploads/clock.svg",
           alt: "Duration",
+          title: "7 MONTHS",
           title: "7 MONTHS",
           subtitle:
             "The total duration of the development timeline was 7 months.",
@@ -1146,6 +1255,7 @@ const sampleProjects = [
       overviewParagraphs: [
         "Quran Touch is a comprehensive all-in-one iOS app that offers users a real Quran reading experience. This app helps users to read the Quran anywhere without the internet and listen to the Quran in different Qari voices, qibla directions, prayer reminders, and prayer timing. The goal of our experienced team was to create an app that would enable users to listen to the Quran whenever they want without carrying around a physical copy of the holy book. Quran touch is a collection of the world’s finest Quran reciters, boasting an innovative and intuitive interface and outstanding features.",
       ],
+      overviewImage: "/uploads/overviewQuran.png",
       overviewImage: "/uploads/overviewQuran.png",
       aboutParagraph:
         "Quran Touch is a fully-featured iOS app. Reading or listening to the Quran in this format on an iOS device is a unique experience. The application has a simple and intuitive interface, so it’s incredibly easy to use. The leading Muslim lifestyle app with the most accurate prayer times, empowering and helping millions of Muslims with listening to Quran. This app provides a convenient and flexible interface for a smooth user journey. This handy tool can be customized to users reading preferences with an extensive range of available themes, each of which comes equipped with a different set of functionality and a different aesthetic.",
@@ -1166,6 +1276,7 @@ const sampleProjects = [
           icon: "/uploads/code.svg",
           alt: "Technologies",
           title: "REACT, NODE JS, PYTHON",
+          title: "REACT, NODE JS, PYTHON",
           subtitle: "Technologies",
         },
         {
@@ -1178,6 +1289,7 @@ const sampleProjects = [
       solution: {
         description:
           "Quran Touch is a mobile application available on both Android and iOS devices, which was featured in the Apple Store in 2019. Our experienced team conducted thorough market research to develop a user-friendly app that perfectly serves its purpose.",
+          "Quran Touch is a mobile application available on both Android and iOS devices, which was featured in the Apple Store in 2019. Our experienced team conducted thorough market research to develop a user-friendly app that perfectly serves its purpose.",
         solutionsPoints1: [
           "To make the Quran accessible to users of all ages, Quran Touch offers a variety of Quran book volumes.",
           "The audio Quran translation accompanied by a textual one is the most helpful feature of this software. If the target audience cannot read the translation, they can readily hear it.",
@@ -1187,6 +1299,7 @@ const sampleProjects = [
           "This reliable app provides the approximate times of Islamic prayers worldwide according to their local time zone and also notifies them at the time of each prayer.",
           "There are free and premium membership options available for anyone interested in using this helpful tool.",
         ],
+        solutionImage: "/uploads/solutionQuran.png",
         solutionImage: "/uploads/solutionQuran.png",
       },
       keyFeature: {
@@ -1201,6 +1314,7 @@ const sampleProjects = [
           "The Quran touch app is the ground of all the features required by the Muslim community to perform daily spiritual tasks. Users can get the benefit of all the features under one roof.",
         ],
         keyFeaturesImage: "/uploads/keyfuncQuran.png",
+        keyFeaturesImage: "/uploads/keyfuncQuran.png",
       },
       result: {
         description:
@@ -1213,7 +1327,9 @@ const sampleProjects = [
       },
       clientFeedback: {
         clientNameAndDesignation: "Omar Taha, CEO, Quran Touch Inc.",
+        clientNameAndDesignation: "Omar Taha, CEO, Quran Touch Inc.",
         clientImage: "",
+        feedback: "The best thing about them is their commitment to the deadlines & smooth communication. We finished everything on time. It was a great experience.",
         feedback: "The best thing about them is their commitment to the deadlines & smooth communication. We finished everything on time. It was a great experience.",
       },
     },
@@ -1272,8 +1388,8 @@ const seedDatabase = async (): Promise<void> => {
     await Project.insertMany(sampleProjects);
     console.log("Sample projects inserted");
 
-    await TeamGallery.insertMany(sampleTeamGalleries);
-    console.log("Sample team galleries inserted");
+    // await TeamGallery.insertMany(sampleTeamGalleries);
+    // console.log("Sample team galleries inserted");
 
     await mongoose.connection.close();
     console.log("Connection closed");
