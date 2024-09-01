@@ -11,8 +11,7 @@ interface IBrevoEmailOptions {
   replyTo?: { email: string; name?: string };
 }
 interface IContactProperties {
-  FIRSTNAME: string;
-  LASTNAME?: string;
+  name: string;
   email: string;
   companyWebsite?: string;
   message?: string;
@@ -52,21 +51,13 @@ export const sendBrevoEmail = async (
 export const SendContactEmail = async (
   contactProperties: IContactProperties,
 ): Promise<IApiResponse> => {
-  const {
-    FIRSTNAME,
-    LASTNAME,
-    email,
-    companyWebsite,
-    message,
-    getNda,
-    consent,
-  } = contactProperties;
+  const { name, email, companyWebsite, message, getNda, consent } = contactProperties;
 
-  if (!FIRSTNAME || !email || consent === undefined) {
+  if (!name || !email || consent === undefined) {
     return {
       status: 400,
       message:
-        "Missing required fields: FIRSTNAME, email, and consent are required.",
+        "Missing required fields: name, email, and consent are required.",
     };
   }
 
@@ -82,27 +73,18 @@ export const SendContactEmail = async (
     <html>
       <body>
         <h1>Contact Form Submission</h1>
-        <p><strong>First Name:</strong> ${sanitizeHtml(FIRSTNAME)}</p>
-        <p><strong>Last Name:</strong> ${sanitizeHtml(LASTNAME || "")}</p>
+        <p><strong>Name:</strong> ${sanitizeHtml(name)}</p>
         <p><strong>Business Email:</strong> ${sanitizeHtml(email)}</p>
-        <p><strong>Company Website:</strong> ${sanitizeHtml(
-          companyWebsite || "N/A",
-        )}</p>
-        <p><strong>Message/Project Brief:</strong> ${sanitizeHtml(
-          message || "N/A",
-        )}</p>
+        <p><strong>Company Website:</strong> ${sanitizeHtml(companyWebsite || "N/A")}</p>
+        <p><strong>Message/Project Brief:</strong> ${sanitizeHtml(message || "N/A")}</p>
         <p><strong>Get an NDA:</strong> ${getNda ? "true" : "false"}</p>
-        <p><strong>Consent to Data Processing:</strong> ${
-          consent ? "true" : "false"
-        }</p>
+        <p><strong>Consent to Data Processing:</strong> ${consent ? "true" : "false"}</p>
       </body>
     </html>
   `);
 
   const brevoOptions: IBrevoEmailOptions = {
-    subject: `New Contact Form Submission from ${sanitizeHtml(
-      FIRSTNAME,
-    )} ${sanitizeHtml(LASTNAME || "")}`,
+    subject: `New Contact Form Submission from ${sanitizeHtml(name)}`,
     htmlContent: sanitizedHtmlContent,
     sender: { email: process.env.PERSONAL_EMAIL || "" },
     to: [
@@ -112,52 +94,9 @@ export const SendContactEmail = async (
     ],
     replyTo: {
       email: sanitizeHtml(email),
-      name: `${sanitizeHtml(FIRSTNAME)} ${sanitizeHtml(LASTNAME || "")}`,
+      name: sanitizeHtml(name),
     },
   };
 
   return sendBrevoEmail(brevoOptions);
 };
-
-// interface ITransactionalEmailFilter {
-//   email?: string;
-//   templateId?: number;
-//   messageId?: string;
-//   startDate?: string;
-//   endDate?: string;
-//   sort?: 'asc' | 'desc';
-//   limit?: number;
-//   offset?: number;
-// }
-
-// export const getTransactionalEmails = async (
-//   filters: ITransactionalEmailFilter
-// ): Promise<IApiResponse> => {
-//   const { email, templateId, messageId, startDate, endDate, sort = 'desc', limit = 500, offset = 0 } = filters;
-
-//   try {
-//     const response = await axios.get(
-//       'https://api.brevo.com/v3/smtp/emails',
-//       {
-//         params: {
-//           email,
-//           templateId,
-//           messageId,
-//           startDate,
-//           endDate,
-//           sort,
-//           limit,
-//           offset,
-//         },
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'api-key': process.env.BREVO_API_KEY || '',
-//         },
-//       }
-//     );
-
-//     return handleSuccess(response, 'Transactional emails retrieved successfully');
-//   } catch (error) {
-//     return handleError(error);
-//   }
-// };

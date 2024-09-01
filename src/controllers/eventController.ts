@@ -1,26 +1,85 @@
 import { Request, Response } from "express";
-import { handleTrackEventByMixpanel } from "../mixpanel/mixpanelController";
-import { handleCreateEventByBrevo } from "../brevo/events/brevoEventController";
-export const handleCreateEvent = async (
+import { handleCreateEventByBrevo } from "../brevo/events/brevoEventService";
+import { handleTrackEvent } from "../mixpanel/mixpanelService";
+import { IApiResponse } from "../types";
+
+export const handleEvent = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const mixpanelResult = await handleTrackEventByMixpanel(req, res);
+  const {
+    event_name,
+    contact_properties = {},
+    event_properties,
+  } = req.body;
 
-  if (mixpanelResult?.status !== 200) {
-    res.status(mixpanelResult?.status || 500).json(mixpanelResult);
-    return;
+
+  try {
+    const brevoResponse: IApiResponse = await handleCreateEventByBrevo(
+      event_name,
+      contact_properties,
+      event_properties,
+      req.cookies,
+    );
+
+    if (brevoResponse.status !== 200) {
+      res.status(brevoResponse.status).json({
+        status: brevoResponse.status,
+        message: brevoResponse.message,
+        errorCode: brevoResponse.errorCode,
+        ...brevoResponse.data,
+      });
+      return; 
+    }
+
+
+    if (brevoResponse.data && brevoResponse.data.email_id) {
+      res.cookie("anonymousEmailId", brevoResponse.data.email_id, {
+        maxAge: 365 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
+    }
+
+    const mixpanelResponse: IApiResponse = await handleTrackEvent(
+      event_name,
+      contact_properties,
+      event_properties,
+      req.cookies
+    );
+
+    if (mixpanelResponse.status !== 200) {
+      res.status(mixpanelResponse.status).json({
+        status: mixpanelResponse.status,
+        message: mixpanelResponse.message,
+        errorCode: mixpanelResponse.errorCode,
+        ...mixpanelResponse.data,
+      });
+      return; 
+    }
+
+    if (mixpanelResponse.data && mixpanelResponse.data.distinctId) {
+      res.cookie("distinctId", mixpanelResponse.data.distinctId, {
+        maxAge: 365 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
+    }
+
+    res.status(200).json({
+      brevo: {
+        status: brevoResponse.status,
+        message: brevoResponse.message,
+        ...brevoResponse.data,
+      },
+      mixpanel: {
+        status: mixpanelResponse.status,
+        message: mixpanelResponse.message,
+        ...mixpanelResponse.data,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: "Error handling event in both Brevo and Mixpanel",
+    });
   }
-
-  const brevoResult = await handleCreateEventByBrevo(req, res);
-
-  if (brevoResult?.status !== 200) {
-    res.status(brevoResult?.status || 500).json(brevoResult);
-    return;
-  }
-
-  res.status(200).json({
-    status: 200,
-    message: "Event tracked successfully in both Mixpanel and Brevo",
-  });
 };
