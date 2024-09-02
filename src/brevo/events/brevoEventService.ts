@@ -45,7 +45,11 @@ export const handleCreateEventByBrevo = async (
   event_properties: IEventProperties,
   cookies: { anonymousEmailId?: string },
 ): Promise<IApiResponse> => {
-  const { name = "", email = "", consent = false } = contact_properties as IContactProperties;
+  const {
+    name = "",
+    email = "",
+    consent = false,
+  } = contact_properties as IContactProperties;
 
   let email_id: string | undefined = cookies.anonymousEmailId;
 
@@ -79,17 +83,28 @@ export const handleCreateEventByBrevo = async (
     const result = await createEvent(eventOptions);
 
     if (result.status !== 200 && result.status !== 204) {
-      return handleError(result.data, result.errorCode, result.message, result.status);
+      return handleError(
+        result.data,
+        result.errorCode,
+        result.message,
+        result.status,
+      );
     }
 
     if (event_name === "contact_form_submission") {
       if (!result.data && result.status === 204) {
-        return handleSuccess({ status: 200, data: { email_id: contact_properties.email } }, "Event created successfully");
+        return handleSuccess(
+          { status: 200, data: { email_id: contact_properties.email } },
+          "Event created successfully",
+        );
       }
     }
 
     if (!result.data && result.status === 204) {
-      return handleSuccess({ status: 200, data: { email_id } }, "Event created successfully");
+      return handleSuccess(
+        { status: 200, data: { email_id } },
+        "Event created successfully",
+      );
     }
 
     return handleSuccess({ status: 200, data: { email_id } }, result.message);

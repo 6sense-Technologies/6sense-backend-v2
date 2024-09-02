@@ -15,7 +15,7 @@ export const handleTrackEventByMixpanel = async (
     eventName,
     contactProperties,
     eventProperties,
-    req.cookies
+    req.cookies,
   );
 
   if (response.data && response.data.distinctId) {

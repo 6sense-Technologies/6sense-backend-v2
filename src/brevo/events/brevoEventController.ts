@@ -3,7 +3,7 @@ import { handleCreateEventByBrevo } from "./brevoEventService";
 
 export const handleCreateEventByBrevoController = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const { event_name, contact_properties = {}, event_properties } = req.body;
 

@@ -1223,7 +1223,7 @@ const sampleProjects = [
 const sampleTeamGalleries = [
   {
     title: "Dedicated Department workstation",
-    image: "/uploads/gallery1.png",
+    image: "/uploads/gallery1.jpg",
   },
   {
     title: "Cafeteria",
@@ -1234,28 +1234,16 @@ const sampleTeamGalleries = [
     image: "/uploads/gallery3.jpg",
   },
   {
-    title: "Rest Zone",
+    title: "Workshop",
     image: "/uploads/gallery4.jpg",
   },
   {
     title: "Party & Celebration",
-    image: "/uploads/gallery5.png",
-  },
-  {
-    title: "Separate Female corner",
-    image: "/uploads/gallery6.png",
-  },
-  {
-    title: "Dedicated Prayer Zone",
-    image: "/uploads/gallery7.png",
-  },
-  {
-    title: "Yearly Tours",
-    image: "/uploads/gallery8.png",
+    image: "/uploads/gallery9.jpg",
   },
   {
     title: "Awards",
-    image: "/uploads/gallery9.png",
+    image: "/uploads/gallery6.jpg",
   },
 ];
 
@@ -1269,8 +1257,8 @@ const seedDatabase = async (): Promise<void> => {
     await mongoose.connect(mongoURI);
     console.log("Connected to MongoDB");
 
-    await Project.insertMany(sampleProjects);
-    console.log("Sample projects inserted");
+    // await Project.insertMany(sampleProjects);
+    // console.log("Sample projects inserted");
 
     await TeamGallery.insertMany(sampleTeamGalleries);
     console.log("Sample team galleries inserted");

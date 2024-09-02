@@ -5,14 +5,9 @@ import { IApiResponse } from "../types";
 
 export const handleEvent = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
-  const {
-    event_name,
-    contact_properties = {},
-    event_properties,
-  } = req.body;
-
+  const { event_name, contact_properties = {}, event_properties } = req.body;
 
   try {
     const brevoResponse: IApiResponse = await handleCreateEventByBrevo(
@@ -29,9 +24,8 @@ export const handleEvent = async (
         errorCode: brevoResponse.errorCode,
         ...brevoResponse.data,
       });
-      return; 
+      return;
     }
-
 
     if (brevoResponse.data && brevoResponse.data.email_id) {
       res.cookie("anonymousEmailId", brevoResponse.data.email_id, {
@@ -44,7 +38,7 @@ export const handleEvent = async (
       event_name,
       contact_properties,
       event_properties,
-      req.cookies
+      req.cookies,
     );
 
     if (mixpanelResponse.status !== 200) {
@@ -54,7 +48,7 @@ export const handleEvent = async (
         errorCode: mixpanelResponse.errorCode,
         ...mixpanelResponse.data,
       });
-      return; 
+      return;
     }
 
     if (mixpanelResponse.data && mixpanelResponse.data.distinctId) {
