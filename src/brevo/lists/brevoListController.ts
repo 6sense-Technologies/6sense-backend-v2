@@ -10,7 +10,10 @@ import {
 } from "./brevoListService";
 import { parseQueryParams } from "../../utils/parseQueryParams";
 
-export const getAllListsController = async (req: Request, res: Response): Promise<void> => {
+export const getAllListsController = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
   const { parsedLimit, parsedOffset, parsedSort } = parseQueryParams(req);
   const result = await getAllLists(parsedLimit, parsedOffset, parsedSort);
   res.status(result.status).json(result);

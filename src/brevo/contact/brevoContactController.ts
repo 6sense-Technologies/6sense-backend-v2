@@ -8,7 +8,10 @@ import {
 } from "./brevoContactService";
 import { parseQueryParams } from "../../utils/parseQueryParams";
 
-export const getAllContactsController = async (req: Request, res: Response): Promise<void> => {
+export const getAllContactsController = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
   const { parsedLimit, parsedOffset, parsedSort } = parseQueryParams(req);
   const result = await getAllContacts(parsedLimit, parsedOffset, parsedSort);
   res.status(result.status).json(result);

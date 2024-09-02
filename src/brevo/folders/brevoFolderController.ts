@@ -18,7 +18,10 @@ export const createFolderController = async (
   res.status(result.status).json(result);
 };
 
-export const getFoldersController = async (req: Request, res: Response): Promise<void> => {
+export const getFoldersController = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
   const { parsedLimit, parsedOffset, parsedSort } = parseQueryParams(req);
   const result = await getFolders(parsedLimit, parsedOffset, parsedSort);
   res.status(result.status).json(result);
@@ -52,7 +55,10 @@ export const deleteFolderController = async (
   res.status(result.status).json(result);
 };
 
-export const getFolderListsController = async (req: Request, res: Response): Promise<void> => {
+export const getFolderListsController = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
   const { folderId } = req.params;
   const { parsedLimit, parsedOffset, parsedSort } = parseQueryParams(req);
   const result = await getFolderLists(
