@@ -20,7 +20,7 @@ interface IContactProperties {
 }
 
 export const sendBrevoEmail = async (
-  options: IBrevoEmailOptions
+  options: IBrevoEmailOptions,
 ): Promise<IApiResponse> => {
   const { subject, htmlContent, sender, to, replyTo } = options;
 
@@ -28,11 +28,7 @@ export const sendBrevoEmail = async (
     const response = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {
-        subject,
-        htmlContent,
-        sender,
-        to,
-        replyTo,
+        subject, htmlContent, sender, to, replyTo,
       },
       {
         headers: {
@@ -49,7 +45,7 @@ export const sendBrevoEmail = async (
 };
 
 export const SendContactEmail = async (
-  contactProperties: IContactProperties
+  contactProperties: IContactProperties,
 ): Promise<IApiResponse> => {
   const {
     name,
@@ -57,8 +53,8 @@ export const SendContactEmail = async (
     companyWebsite,
     message,
     getNda,
-    consent } =
-    contactProperties;
+    consent,
+  } = contactProperties;
 
   if (!name || !email || consent === undefined) {
     return {
@@ -83,14 +79,14 @@ export const SendContactEmail = async (
         <p><strong>Name:</strong> ${sanitizeHtml(name)}</p>
         <p><strong>Business Email:</strong> ${sanitizeHtml(email)}</p>
         <p><strong>Company Website:</strong> ${sanitizeHtml(
-    companyWebsite || "N/A"
-  )}</p>
+          companyWebsite || "N/A",
+        )}</p>
         <p><strong>Message/Project Brief:</strong> ${sanitizeHtml(
-    message || "N/A"
-  )}</p>
+          message || "N/A",
+        )}</p>
         <p><strong>Get an NDA:</strong> ${getNda ? "true" : "false"}</p>
         <p><strong>Consent to Data Processing:</strong> ${consent ? "true" : "false"
-    }</p>
+        }</p>
       </body>
     </html>
   `);

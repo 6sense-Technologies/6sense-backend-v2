@@ -43,4 +43,5 @@ app.use("/", caseStudyRoutes);
 app.use("/mixpanel", mixpanelRoutes);
 app.use("/", eventsRoutes);
 app.use("/", teamGalleryRoutes);
+
 export default app;
