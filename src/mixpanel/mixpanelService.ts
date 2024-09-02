@@ -151,7 +151,7 @@ export const handleTrackEvent = async (
   eventName: string,
   contactProperties: IEventProperties,
   eventProperties: IEventProperties,
-  cookies: { distinctId?: string }
+  cookies: { distinctId?: string },
 ): Promise<IApiResponse> => {
   const email = contactProperties?.email;
   const distinctId = email || cookies.distinctId || uuidv4();

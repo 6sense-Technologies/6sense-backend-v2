@@ -109,7 +109,8 @@ const sampleProjects = [
       clientFeedback: {
         clientNameAndDesignation: "Gabriel Sotomayor, CEO, Impromek Inc.",
         clientImage: "",
-        feedback: "The solution 6sense Technologies came up with to the problem was truly innovative and first in class. Their strong technical skills and speed of development are super impressive.",
+        feedback:
+          "The solution 6sense Technologies came up with to the problem was truly innovative and first in class. Their strong technical skills and speed of development are super impressive.",
       },
     },
   },
@@ -317,7 +318,8 @@ const sampleProjects = [
       clientFeedback: {
         clientNameAndDesignation: "Sid, CEO, Breaking Mars Inc.",
         clientImage: "",
-        feedback: "Working with LinkedIn APIs was a challenging task due to their frequent changes. Additionally, we needed to develop an algorithm that would prevent users from being banned on LinkedIn. The 6sense team embraced the challenge and successfully delivered. Their exceptional technical expertise and rapid development pace are truly impressive.",
+        feedback:
+          "Working with LinkedIn APIs was a challenging task due to their frequent changes. Additionally, we needed to develop an algorithm that would prevent users from being banned on LinkedIn. The 6sense team embraced the challenge and successfully delivered. Their exceptional technical expertise and rapid development pace are truly impressive.",
       },
     },
   },
@@ -422,7 +424,8 @@ const sampleProjects = [
       clientFeedback: {
         clientNameAndDesignation: "MD Alayob, CEO, Itcan Inc",
         clientImage: "",
-        feedback: "We interviewed different providers and selected 6sense because of two main factors: their proven track record of success developing businesses, and the leaderships passion and commitment to building great products.",
+        feedback:
+          "We interviewed different providers and selected 6sense because of two main factors: their proven track record of success developing businesses, and the leaderships passion and commitment to building great products.",
       },
     },
   },
@@ -707,7 +710,8 @@ const sampleProjects = [
       clientFeedback: {
         clientNameAndDesignation: "Chris, CTO, Forget Me Not",
         clientImage: "",
-        feedback: "The 6sense team exceeded our expectations. Their ability to adapt and solve complex problems was outstanding. We're thrilled with the results.",
+        feedback:
+          "The 6sense team exceeded our expectations. Their ability to adapt and solve complex problems was outstanding. We're thrilled with the results.",
       },
     },
   },
@@ -1214,7 +1218,8 @@ const sampleProjects = [
       clientFeedback: {
         clientNameAndDesignation: "Omar Taha, CEO, Quran Touch Inc.",
         clientImage: "",
-        feedback: "The best thing about them is their commitment to the deadlines & smooth communication. We finished everything on time. It was a great experience.",
+        feedback:
+          "The best thing about them is their commitment to the deadlines & smooth communication. We finished everything on time. It was a great experience.",
       },
     },
   },
@@ -1271,5 +1276,3 @@ const seedDatabase = async (): Promise<void> => {
 };
 
 seedDatabase();
-
-
