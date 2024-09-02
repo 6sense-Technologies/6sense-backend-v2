@@ -3,5 +3,4 @@ export interface IApiResponse {
   message: string;
   data?: any;
   errorCode?: string;
-
 }

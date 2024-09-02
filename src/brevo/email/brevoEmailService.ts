@@ -10,6 +10,7 @@ interface IBrevoEmailOptions {
   to: { email: string }[];
   replyTo?: { email: string; name?: string };
 }
+
 interface IContactProperties {
   name: string;
   email: string;
@@ -28,7 +29,11 @@ export const sendBrevoEmail = async (
     const response = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {
-        subject, htmlContent, sender, to, replyTo,
+        subject,
+        htmlContent,
+        sender,
+        to,
+        replyTo,
       },
       {
         headers: {
