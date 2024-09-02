@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
 import corsMiddleware from "./middleware/corsMiddleware";
 import rateLimiter from "./middleware/rateLimitMiddleware";
 import helloWorldRoutes from "./routes/helloWorldRoutes";
@@ -17,6 +18,7 @@ import eventsRoutes from "./routes/eventsRoute";
 import teamGalleryRoutes from "./routes/teamGalleryRoutes";
 
 const app = express();
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(corsMiddleware);
 app.use(rateLimiter);
