@@ -65,7 +65,7 @@ export const identifyUser = async (
 export const trackUserEvent = async (
   distinctId: string,
   event_name: string,
-  properties: IEventProperties
+  properties: IEventProperties,
 ): Promise<IApiResponse> => {
   const { apiUrl, projectToken } = mixpanelConfig;
 

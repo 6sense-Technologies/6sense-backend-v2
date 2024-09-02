@@ -1262,8 +1262,8 @@ const seedDatabase = async (): Promise<void> => {
     await mongoose.connect(mongoURI);
     console.log("Connected to MongoDB");
 
-    // await Project.insertMany(sampleProjects);
-    // console.log("Sample projects inserted");
+    await Project.insertMany(sampleProjects);
+    console.log("Sample projects inserted");
 
     await TeamGallery.insertMany(sampleTeamGalleries);
     console.log("Sample team galleries inserted");
