@@ -40,7 +40,7 @@ export const sendBrevoEmail = async (
           "Content-Type": "application/json",
           "api-key": process.env.BREVO_API_KEY || "",
         },
-      }
+      },
     );
 
     return handleSuccess(response, "Email successfully sent");
