@@ -7,7 +7,7 @@ export const apiRequest = async (
   url: string,
   successMessage: string,
   data?: object,
-  params?: object
+  params?: object,
 ): Promise<IApiResponse> => {
   const apiInstance = initializeBrevoClient();
 
