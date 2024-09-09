@@ -1,7 +1,8 @@
-import axios, { AxiosError } from "axios";
-import { handleSuccess, handleError } from "../../utils/responseHandlers";
+import { apiRequest } from "../../utils/apiRequest";
 import { IApiResponse } from "../../types";
 import sanitizeHtml from "sanitize-html";
+import { handleError } from "../../utils/responseHandlers";
+import { AxiosError } from "axios";
 
 interface IBrevoEmailOptions {
   subject: string;
@@ -25,36 +26,22 @@ export const sendBrevoEmail = async (
 ): Promise<IApiResponse> => {
   const { subject, htmlContent, sender, to, replyTo } = options;
 
-  try {
-    const response = await axios.post(
-      "https://api.brevo.com/v3/smtp/email",
-      {
-        subject,
-        htmlContent,
-        sender,
-        to,
-        replyTo,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": process.env.BREVO_API_KEY || "",
-        },
-      },
-    );
-
-    return handleSuccess(response, "Email successfully sent");
-  } catch (error) {
-    return handleError(error as AxiosError);
-  }
+  return apiRequest("post", "/smtp/email", "Email successfully sent", {
+    subject,
+    htmlContent,
+    sender,
+    to,
+    replyTo,
+  });
 };
 
-export const SendContactEmail = async (
+export const sendContactEmail = async (
   contactProperties: IContactProperties,
 ): Promise<IApiResponse> => {
   const { name, email, companyWebsite, message, getNda, consent } =
     contactProperties;
 
+  // Validation
   if (!name || !email || consent === undefined) {
     return {
       status: 400,
